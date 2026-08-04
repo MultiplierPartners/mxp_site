@@ -6,12 +6,12 @@ author: Matt Teeple
 description: "What has bolstered AI infrastructure valuations in the public and private markets — and what makes those valuations vulnerable to repricing."
 featuredpost: true
 featuredimage: /img/valuation-paradox.jpg
-category: Executive Briefing
+category: The AI Edge
 tags:
-  - Executive Briefing
+  - The AI Edge
   - AI Infrastructure
+  - Hyperscalers
   - Market Risk
-  - Enterprise AI
 ---
 
 *Multiplier Partners — Executive Briefing*
