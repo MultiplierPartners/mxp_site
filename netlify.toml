@@ -1,0 +1,59 @@
+[build]
+  command = "npm ci --legacy-peer-deps && node scripts/build-blog-data.js && npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "20.15.0"
+
+[functions]
+  node_bundler = "nft"
+  included_files = ["netlify/functions/blog-data.json"]
+
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Preserve existing multiplierpartners.ai URLs.
+# The live site serves these without a trailing slash; Gatsby 5 defaults to
+# trailingSlash: "always", so these 301s keep inbound links and rankings intact.
+[[redirects]]
+  from = "/services"
+  to = "/services/"
+  status = 301
+
+[[redirects]]
+  from = "/solutions"
+  to = "/solutions/"
+  status = 301
+
+[[redirects]]
+  from = "/ai-security"
+  to = "/ai-security/"
+  status = 301
+
+[[redirects]]
+  from = "/insights"
+  to = "/insights/"
+  status = 301
+
+[[redirects]]
+  from = "/enterprise-ai-playbook"
+  to = "/enterprise-ai-playbook/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301

@@ -1,0 +1,1444 @@
+// ===================================================================
+// MXP core stylesheet — layout, typography and components
+// ===================================================================
+
+*, *::before, *::after
+  box-sizing: border-box
+
+html
+  scroll-behavior: smooth
+  -webkit-text-size-adjust: 100%
+
+body
+  margin: 0
+  overflow-x: hidden
+  background: $bg
+  color: $fg
+  font-family: $font-sans
+  font-size: 16px
+  line-height: 1.6
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+img
+  max-width: 100%
+  height: auto
+  display: block
+
+a
+  color: inherit
+  text-decoration: none
+
+button
+  font-family: inherit
+
+// Skip link — matches the live site's a11y affordance
+.skip-link
+  position: absolute
+  left: -9999px
+  top: 0
+  z-index: 200
+  padding: 0.75rem 1.25rem
+  background: $primary
+  color: $mxp-white
+  border-radius: 0 0 $radius 0
+  &:focus
+    left: 0
+
+\:focus-visible
+  outline: 2px solid $primary
+  outline-offset: 3px
+
+// -------------------------------------------------------------------
+// Layout primitives
+// -------------------------------------------------------------------
+.container
+  width: 100%
+  max-width: $container
+  margin: 0 auto
+  padding: 0 1.5rem
+  @media (min-width: $bp-lg)
+    padding: 0 2.5rem
+
+.container-wide
+  width: 100%
+  max-width: $container-wide
+  margin: 0 auto
+  padding: 0 1.5rem
+  @media (min-width: $bp-lg)
+    padding: 0 2.5rem
+
+main
+  display: block
+
+// Content sections sit in a wider well (max-w-7xl) than the page heroes.
+.section
+  padding: 5rem 0
+  border-top: 1px solid $border
+  @media (min-width: $bp-lg)
+    padding: 7rem 0
+  > .container
+    max-width: 1280px
+
+.section--flush
+  border-top: none
+
+// Heading in a 5-column well, body in the remaining 7
+.section-split
+  display: grid
+  gap: 3rem
+  @media (min-width: $bp-lg)
+    grid-template-columns: repeat(12, 1fr)
+
+.section-split__head
+  @media (min-width: $bp-lg)
+    grid-column: span 5
+
+.section-split__head .h-section
+  margin-top: 1rem
+  max-width: none
+
+.section-split__body
+  min-width: 0
+  @media (min-width: $bp-lg)
+    grid-column: span 7
+
+// Section eyebrow: "01 — The state of enterprise AI"
+// Live site renders these entirely muted — no accent on the number.
+.eyebrow
+  display: flex
+  align-items: baseline
+  gap: 0.6rem
+  font-size: 0.75rem
+  font-weight: 500
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  margin-bottom: 1.75rem
+
+.eyebrow__num
+  color: $primary
+  font-variant-numeric: tabular-nums
+
+.eyebrow--plain
+  display: block
+  color: $fg-muted
+
+// -------------------------------------------------------------------
+// Typography
+// -------------------------------------------------------------------
+h1, h2, h3, h4
+  margin: 0
+  color: $fg
+  font-weight: 600
+  letter-spacing: -0.025em
+  line-height: 1.05
+
+// Home hero — 72px on the live site
+.h-display
+  font-size: clamp(2.75rem, 5vw, 4.5rem)
+  font-weight: 600
+  letter-spacing: -0.025em
+  line-height: 1.05
+  max-width: $heading-width
+
+// Section headings — 48px on the live site
+.h-section
+  font-size: clamp(1.85rem, 3.35vw, 3rem)
+  font-weight: 600
+  letter-spacing: -0.025em
+  line-height: 1.05
+  max-width: $heading-width
+
+.h-section--wide
+  max-width: $heading-width
+
+.lede
+  color: rgba(245, 245, 242, 0.8)
+  font-size: 1.125rem
+  line-height: 1.625
+  max-width: $lede-width
+  margin: 1.5rem 0 0
+
+.body-copy
+  color: rgba(245, 245, 242, 0.8)
+  font-size: 1rem
+  line-height: 1.7
+  max-width: $lede-width
+  margin: 1.25rem 0 0
+
+.text-violet
+  color: $primary
+
+// -------------------------------------------------------------------
+// Buttons
+// -------------------------------------------------------------------
+// Solid buttons use an 8px radius on the live site; outline buttons are pills.
+.btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 0.6rem
+  padding: 14px 24px
+  border-radius: 8px
+  font-size: 1rem
+  font-weight: 500
+  line-height: 1.25
+  border: 1px solid transparent
+  cursor: pointer
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease
+
+.btn--primary
+  background: $primary
+  color: $fg
+  &:hover
+    background: #b32bff
+
+.btn--white
+  background: $mxp-white
+  color: #000
+  &:hover
+    background: $mxp-off-white
+
+.btn--outline
+  border-radius: $radius-pill
+  border-color: $border
+  color: $fg
+  &:hover
+    border-color: $border-strong
+    background: rgba(255, 255, 255, 0.04)
+
+.btn--pill
+  border-radius: $radius-pill
+
+// Subtle bordered button — used for the footer LinkedIn action
+.btn--ghost
+  padding: 12px 20px
+  font-size: 0.875rem
+  border-color: rgba(255, 255, 255, 0.2)
+  background: rgba(255, 255, 255, 0.05)
+  color: $fg
+  &:hover
+    border-color: rgba(255, 255, 255, 0.35)
+    background: rgba(255, 255, 255, 0.09)
+
+.btn-row
+  display: flex
+  flex-wrap: wrap
+  gap: 1rem
+  margin-top: 2.5rem
+
+// Inline text link with arrow
+.link-arrow
+  display: inline-flex
+  align-items: center
+  gap: 0.4rem
+  color: $fg
+  font-size: 0.95rem
+  font-weight: 500
+  border-bottom: 1px solid transparent
+  transition: color 0.18s ease, border-color 0.18s ease
+  &:hover
+    color: $primary
+    border-color: $primary
+
+// -------------------------------------------------------------------
+// Navbar
+// -------------------------------------------------------------------
+.mxp-nav
+  position: sticky
+  top: 0
+  z-index: 100
+  background: rgba(5, 5, 5, 0.85)
+  backdrop-filter: blur(14px)
+  border-bottom: 1px solid $border
+
+// The header spans wider than the content container so the nav + CTA fit.
+.mxp-nav__inner
+  max-width: 1600px
+  margin: 0 auto
+  padding: 0 1.5rem
+  min-height: $nav-height
+  display: flex
+  align-items: center
+  gap: 1.5rem
+  @media (min-width: $bp-lg)
+    padding: 0 2.5rem
+
+.mxp-nav__brand
+  display: flex
+  align-items: center
+  gap: 0.85rem
+  flex-shrink: 0
+
+.mxp-nav__mark
+  font-size: 1.25rem
+  font-weight: 600
+  letter-spacing: -0.025em
+  color: $fg
+
+.mxp-nav__tagline
+  max-width: 19rem
+  font-size: 0.7rem
+  font-weight: 400
+  line-height: 1rem
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  // Only drop the tagline on genuinely narrow screens
+  @media (max-width: $bp-sm)
+    display: none
+
+.mxp-nav__links
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  justify-content: flex-end
+  gap: 0.5rem 1.35rem
+  margin: 0 0 0 auto
+  padding: 0
+  list-style: none
+  @media (max-width: $bp-nav)
+    display: none
+
+.mxp-nav__link
+  font-size: 0.875rem
+  font-weight: 400
+  color: $fg
+  transition: color 0.18s ease
+  &:hover
+    color: $primary
+
+.mxp-nav__link--active
+  color: $primary
+
+.mxp-nav__cta
+  flex-shrink: 0
+  max-width: 10rem
+  padding: 10px 20px
+  border-radius: $radius-pill
+  font-size: 0.875rem
+  line-height: 1.25
+  text-align: center
+  @media (max-width: $bp-nav)
+    display: none
+
+.mxp-nav__burger
+  display: none
+  margin-left: auto
+  @media (max-width: $bp-nav)
+    display: flex
+  width: 44px
+  height: 44px
+  background: none
+  border: 1px solid $border-strong
+  border-radius: $radius-sm
+  cursor: pointer
+  padding: 0
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 5px
+  span
+    display: block
+    width: 18px
+    height: 1.5px
+    background: $fg
+    transition: transform 0.2s ease, opacity 0.2s ease
+
+.mxp-nav__burger.is-open
+  span:nth-child(1)
+    transform: translateY(6.5px) rotate(45deg)
+  span:nth-child(2)
+    opacity: 0
+  span:nth-child(3)
+    transform: translateY(-6.5px) rotate(-45deg)
+
+.mxp-nav__mobile
+  display: none
+  border-top: 1px solid $border
+  background: $bg
+  padding: 1rem 1.5rem 2rem
+  @media (max-width: $bp-nav)
+    display: block
+  a
+    display: block
+    padding: 0.85rem 0
+    font-size: 1.05rem
+    border-bottom: 1px solid $border
+    &:hover
+      color: $primary
+  .btn
+    margin-top: 1.5rem
+    width: 100%
+    border-bottom: none
+
+// -------------------------------------------------------------------
+// Hero
+// -------------------------------------------------------------------
+.hero
+  position: relative
+  overflow: hidden
+  padding: 7rem 0 5rem
+  @media (max-width: $bp-md)
+    padding: 4rem 0 3rem
+
+// Grid backdrop + violet bloom, mirroring the live site
+.hero::before
+  content: ""
+  position: absolute
+  inset: 0
+  background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px)
+  background-size: 64px 64px
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%)
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%)
+  pointer-events: none
+
+.hero::after
+  content: ""
+  position: absolute
+  top: -10%
+  left: 50%
+  transform: translateX(-50%)
+  width: 900px
+  height: 520px
+  background: radial-gradient(ellipse at center, rgba(161, 0, 255, 0.16) 0%, rgba(161, 0, 255, 0.05) 45%, transparent 70%)
+  pointer-events: none
+
+.hero__inner
+  position: relative
+  z-index: 1
+
+.hero__title
+  margin-top: 1.25rem
+  max-width: $heading-width
+
+.hero__lede
+  margin-top: 2rem
+  max-width: $lede-width
+  font-size: 1.25rem
+  line-height: 1.625
+
+// Three-up value strip under the hero
+.value-strip
+  position: relative
+  z-index: 1
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1.25rem
+  margin-top: 5rem
+  @media (max-width: $bp-md)
+    grid-template-columns: 1fr
+    margin-top: 3rem
+
+.value-strip__item
+  padding: 1.75rem
+  border: 1px solid $border
+  border-radius: $radius-lg
+  background: rgba(255, 255, 255, 0.015)
+
+.value-strip__label
+  font-size: 0.72rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $primary
+  margin: 0 0 0.75rem
+
+.value-strip__text
+  margin: 0
+  color: $fg-muted
+  font-size: 0.95rem
+  line-height: 1.6
+
+// -------------------------------------------------------------------
+// Inner page hero
+// -------------------------------------------------------------------
+.page-hero
+  position: relative
+  overflow: hidden
+  padding: 4.5rem 0 3.5rem
+  border-bottom: 1px solid $border
+
+.page-hero::after
+  content: ""
+  position: absolute
+  top: -60%
+  left: 20%
+  width: 620px
+  height: 420px
+  background: radial-gradient(ellipse at center, rgba(161, 0, 255, 0.13) 0%, transparent 70%)
+  pointer-events: none
+
+.page-hero__inner
+  position: relative
+  z-index: 1
+
+.breadcrumb
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.55rem
+  margin: 0 0 1.75rem
+  padding: 0
+  list-style: none
+  font-size: 0.75rem
+  font-weight: 500
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  a:hover
+    color: $primary
+
+.page-hero__eyebrow
+  font-size: 0.75rem
+  font-weight: 500
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  margin: 0 0 1rem
+
+.page-hero__title
+  font-size: clamp(2rem, 4.2vw, 3.75rem)
+  font-weight: 600
+  letter-spacing: -0.025em
+  line-height: 1.05
+  max-width: $heading-width
+
+// -------------------------------------------------------------------
+// Section header helper
+// -------------------------------------------------------------------
+.section-head
+  max-width: 78ch
+  margin-bottom: 3rem
+
+// -------------------------------------------------------------------
+// Alternating text / artwork pillars (AI Security)
+// -------------------------------------------------------------------
+.pillar
+  display: grid
+  gap: 3rem
+  align-items: center
+  @media (min-width: $bp-lg)
+    grid-template-columns: repeat(12, 1fr)
+    gap: 4rem
+
+.pillar__text
+  min-width: 0
+  @media (min-width: $bp-lg)
+    grid-column: 1 / span 7
+
+.pillar__art
+  @media (min-width: $bp-lg)
+    grid-column: 8 / span 5
+
+.pillar--flip .pillar__text
+  @media (min-width: $bp-lg)
+    grid-column: 6 / span 7
+
+.pillar--flip .pillar__art
+  @media (min-width: $bp-lg)
+    grid-column: 1 / span 5
+    grid-row: 1
+
+// Matches the live site: fixed-height panel, artwork bleeds to the edges
+.art-panel
+  position: relative
+  height: 11rem
+  width: 100%
+  overflow: hidden
+  border: 1px solid $border
+  border-radius: 1rem
+  background: $bg-card
+  svg
+    display: block
+    height: 100%
+    width: 100%
+
+// -------------------------------------------------------------------
+// Cards
+// -------------------------------------------------------------------
+.card-grid
+  display: grid
+  gap: 1.25rem
+
+.card-grid--2
+  grid-template-columns: repeat(2, 1fr)
+  @media (max-width: $bp-md)
+    grid-template-columns: 1fr
+
+.card-grid--3
+  grid-template-columns: repeat(3, 1fr)
+  @media (max-width: $bp-lg)
+    grid-template-columns: repeat(2, 1fr)
+  @media (max-width: $bp-sm)
+    grid-template-columns: 1fr
+
+.card
+  display: flex
+  flex-direction: column
+  padding: 1.5rem
+  border: 1px solid $border
+  border-radius: 1rem
+  background: $bg-card
+  transition: border-color 0.2s ease
+  height: 100%
+
+a.card:hover
+  border-color: $primary
+
+.card__title
+  font-size: 1.125rem
+  font-weight: 600
+  letter-spacing: -0.02em
+  line-height: 1.3
+  margin: 0 0 0.75rem
+
+.card__text
+  margin: 0
+  color: rgba(245, 245, 242, 0.8)
+  font-size: 0.9375rem
+  line-height: 1.65
+  flex: 1
+
+.card__cta
+  margin-top: 1.5rem
+  font-size: 0.875rem
+  font-weight: 500
+  color: $primary
+
+.card__num
+  font-size: 0.72rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $primary
+  margin: 0 0 0.9rem
+
+// Category + status badge row (Insights cards)
+.card__meta-row
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  gap: 0.75rem
+  margin-bottom: 1rem
+
+.card__category
+  font-size: 0.72rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $primary
+
+.card__badge
+  padding: 4px 10px
+  border: 1px solid $border-strong
+  border-radius: $radius-pill
+  font-size: 0.65rem
+  font-weight: 500
+  letter-spacing: 0.14em
+  text-transform: uppercase
+  color: $fg-muted
+
+// Large centred announcement panel
+.panel-card
+  padding: 4rem 2rem
+  border: 1px solid $border
+  border-radius: 1.25rem
+  background: $bg-card
+  text-align: center
+  @media (max-width: $bp-sm)
+    padding: 2.5rem 1.5rem
+
+.panel-card .eyebrow
+  justify-content: center
+
+.panel-card .h-section
+  max-width: 24ch
+  margin: 0 auto
+
+.panel-card .lede
+  margin-left: auto
+  margin-right: auto
+
+.card__meta
+  margin: 1.25rem 0 0
+  font-size: 0.8rem
+  color: $fg-muted
+  font-variant-numeric: tabular-nums
+
+// -------------------------------------------------------------------
+// Layer list (six-layer framework)
+// -------------------------------------------------------------------
+// Framework layers — half-width cards alternating across a centre timeline spine
+.layer-timeline
+  position: relative
+
+.layer-timeline__spine
+  display: none
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 50%
+  width: 1px
+  transform: translateX(-50%)
+  pointer-events: none
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%)
+  @media (min-width: $bp-md)
+    display: block
+
+.layer-list
+  position: relative
+  list-style: none
+  margin: 0
+  padding: 0
+  display: grid
+  gap: 1rem
+
+.layer-list__row
+  position: relative
+  display: grid
+  gap: 0.75rem
+  @media (min-width: $bp-md)
+    grid-template-columns: repeat(12, 1fr)
+    // Nudge each row toward its own side of the spine
+    &:nth-child(odd)
+      transform: translateX(-12px)
+    &:nth-child(even)
+      transform: translateX(12px)
+
+.layer-list__card
+  padding: 1.5rem
+  border: 1px solid $border
+  border-radius: 1rem
+  background: $bg-card
+  transition: border-color 0.2s ease
+  &:hover
+    border-color: $primary
+  @media (min-width: $bp-md)
+    grid-column: 1 / span 6
+
+.layer-list__row:nth-child(even) .layer-list__card
+  @media (min-width: $bp-md)
+    grid-column: 7 / span 6
+
+.layer-list__label
+  display: flex
+  align-items: center
+  gap: 0.75rem
+  margin-bottom: 0.9rem
+
+.layer-list__dot
+  position: relative
+  flex-shrink: 0
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  background: $primary
+  &::before
+    content: ""
+    position: absolute
+    inset: 0
+    border-radius: 50%
+    background: $primary
+    opacity: 0.75
+    animation: mxp-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite
+
+@keyframes mxp-ping
+  75%, 100%
+    transform: scale(2)
+    opacity: 0
+
+@media (prefers-reduced-motion: reduce)
+  .layer-list__dot::before
+    animation: none
+
+.layer-list__num
+  font-size: 0.75rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $primary
+
+.layer-list__title
+  font-size: 1.2rem
+  font-weight: 600
+  letter-spacing: -0.02em
+  margin: 0 0 0.6rem
+
+.layer-list__text
+  margin: 0
+  color: rgba(245, 245, 242, 0.8)
+  font-size: 0.95rem
+  line-height: 1.65
+
+// -------------------------------------------------------------------
+// Check list
+// -------------------------------------------------------------------
+.check-list
+  list-style: none
+  margin: 2.5rem 0 0
+  padding: 0
+  display: grid
+  gap: 0.9rem
+
+.check-list li
+  position: relative
+  padding-left: 2rem
+  color: $fg-muted
+  line-height: 1.6
+
+.check-list li::before
+  content: ""
+  position: absolute
+  left: 0
+  top: 0.55em
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  background: $primary
+  box-shadow: 0 0 0 4px rgba(161, 0, 255, 0.18)
+
+// -------------------------------------------------------------------
+// Prose block (stacked paragraphs in a section)
+// -------------------------------------------------------------------
+.prose > p
+  color: rgba(245, 245, 242, 0.8)
+  font-size: 1.0625rem
+  line-height: 1.7
+  margin: 0 0 1.5rem
+  &:last-child
+    margin-bottom: 0
+
+// -------------------------------------------------------------------
+// CTA band
+// -------------------------------------------------------------------
+.cta-band
+  position: relative
+  overflow: hidden
+  padding: 6rem 0
+  border-top: 1px solid $border
+  text-align: center
+
+.cta-band::after
+  content: ""
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 760px
+  height: 380px
+  background: radial-gradient(ellipse at center, rgba(161, 0, 255, 0.14) 0%, transparent 70%)
+  pointer-events: none
+
+.cta-band__inner
+  position: relative
+  z-index: 1
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.cta-band .h-section
+  max-width: 24ch
+
+.cta-band .lede
+  margin-left: auto
+  margin-right: auto
+  text-align: center
+
+.cta-band .btn-row
+  justify-content: center
+
+// -------------------------------------------------------------------
+// Footer
+// -------------------------------------------------------------------
+.mxp-footer
+  border-top: 1px solid $border
+  padding: 4.5rem 0 2.5rem
+  background: $bg
+
+.mxp-footer__top
+  display: grid
+  grid-template-columns: 1.6fr 1fr 1fr 1fr
+  gap: 3rem
+  @media (max-width: $bp-lg)
+    grid-template-columns: 1fr 1fr
+  @media (max-width: $bp-sm)
+    grid-template-columns: 1fr
+
+.mxp-footer__mark
+  font-size: 1.4rem
+  font-weight: 700
+  letter-spacing: -0.03em
+  margin-bottom: 1rem
+
+.mxp-footer__blurb
+  color: $fg-muted
+  font-size: 0.92rem
+  line-height: 1.65
+  max-width: 42ch
+  margin: 0 0 1.75rem
+
+.mxp-footer__label
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  margin: 0 0 0.75rem
+
+.mxp-footer__email
+  display: inline-block
+  font-size: 0.875rem
+  color: $fg
+  text-underline-offset: 4px
+  &:hover
+    text-decoration: underline
+
+.mxp-footer__linkedin
+  display: inline-flex
+  margin-top: 1.5rem
+
+.mxp-footer__col h3
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  margin: 0 0 1.1rem
+
+.mxp-footer__col ul
+  list-style: none
+  margin: 0
+  padding: 0
+  display: grid
+  gap: 0.7rem
+
+.mxp-footer__col a
+  font-size: 0.92rem
+  color: $fg
+  opacity: 0.8
+  &:hover
+    opacity: 1
+    color: $primary
+
+.mxp-footer__bottom
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-between
+  gap: 1rem
+  margin-top: 4rem
+  padding-top: 1.75rem
+  border-top: 1px solid $border
+  font-size: 0.85rem
+  color: $fg-muted
+
+// -------------------------------------------------------------------
+// Contact form
+// -------------------------------------------------------------------
+.contact-grid
+  display: grid
+  gap: 3rem
+  @media (min-width: $bp-lg)
+    grid-template-columns: repeat(12, 1fr)
+
+.contact-grid__aside
+  @media (min-width: $bp-lg)
+    grid-column: span 5
+
+.form-panel
+  padding: 2rem
+  border: 1px solid $border
+  border-radius: 1rem
+  background: rgba(255, 255, 255, 0.02)
+  @media (min-width: $bp-lg)
+    grid-column: span 7
+  @media (max-width: $bp-sm)
+    padding: 1.5rem
+
+.contact-email
+  display: inline-block
+  margin: 0.75rem 0 0
+  font-size: clamp(1.5rem, 2.6vw, 2rem)
+  font-weight: 600
+  letter-spacing: -0.025em
+  color: $fg
+  &:hover
+    color: $primary
+
+.expect-card
+  margin-top: 2.5rem
+  padding: 1.75rem
+  border: 1px solid $border
+  border-radius: 1rem
+  background: $bg-card
+
+.expect-card__title
+  font-size: 0.75rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+  margin: 0
+
+.expect-card .check-list
+  margin-top: 1.25rem
+
+// Screen-reader-only / honeypot wrapper
+.visually-hidden
+  position: absolute
+  left: -9999px
+  width: 0
+  height: 0
+  overflow: hidden
+
+.field-grid
+  display: grid
+  gap: 0 1.25rem
+  @media (min-width: $bp-sm)
+    grid-template-columns: 1fr 1fr
+
+.field
+  display: grid
+  gap: 0.5rem
+  margin-bottom: 1.35rem
+
+.field label
+  font-size: 0.75rem
+  font-weight: 500
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $fg-muted
+
+.field__req
+  color: $primary
+
+.field input, .field textarea, .field select
+  width: 100%
+  padding: 12px 16px
+  background: $bg-elevated
+  border: 1px solid $border
+  border-radius: 8px
+  color: $fg
+  font-family: inherit
+  font-size: 1rem
+  transition: border-color 0.18s ease
+  &::placeholder
+    color: rgba(245, 245, 242, 0.4)
+  &:focus
+    outline: none
+    border-color: $primary
+
+.field select
+  appearance: none
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b7b7b7'%3E%3Cpath d='M4.5 6.5 8 10l3.5-3.5z'/%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  background-position: right 14px center
+  background-size: 16px
+  padding-right: 40px
+
+.field textarea
+  min-height: 190px
+  resize: vertical
+
+// -------------------------------------------------------------------
+// Blog — MXP overrides on the inherited blog styles
+// -------------------------------------------------------------------
+.blog-listing
+  padding: 4rem 0 6rem
+
+.blog-listing-header
+  max-width: $container
+  margin: 0 auto 3.5rem
+  padding: 0 1.5rem
+  h1
+    font-size: clamp(2.1rem, 4.6vw, 3.5rem)
+    letter-spacing: -0.03em
+  p
+    color: $fg-muted
+    margin-top: 1.25rem
+    max-width: 62ch
+
+.blog-grid
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1.25rem
+  max-width: $container
+  margin: 0 auto
+  padding: 0 1.5rem
+  @media (max-width: $bp-lg)
+    grid-template-columns: repeat(2, 1fr)
+  @media (max-width: $bp-sm)
+    grid-template-columns: 1fr
+
+.blog-card
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  border: 1px solid $border
+  border-radius: $radius-lg
+  background: rgba(255, 255, 255, 0.015)
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease
+  &:hover
+    border-color: rgba(161, 0, 255, 0.5)
+    background: rgba(161, 0, 255, 0.05)
+    transform: translateY(-2px)
+
+.blog-card-image
+  position: relative
+  aspect-ratio: 16 / 9
+  background: linear-gradient(135deg, $mxp-deep-gray, $mxp-black)
+  overflow: hidden
+
+.blog-card-category
+  position: absolute
+  left: 0.9rem
+  bottom: 0.9rem
+  padding: 0.35rem 0.7rem
+  border-radius: $radius-pill
+  background: rgba(5, 5, 5, 0.8)
+  border: 1px solid rgba(161, 0, 255, 0.5)
+  color: $primary
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.08em
+  text-transform: uppercase
+
+.blog-card-content
+  padding: 1.5rem
+  display: flex
+  flex-direction: column
+  gap: 0.7rem
+
+.blog-card-title
+  font-size: 1.1rem
+  font-weight: 650
+  letter-spacing: -0.015em
+  line-height: 1.3
+  margin: 0
+  color: $fg
+
+.blog-card-excerpt
+  margin: 0
+  color: $fg-muted
+  font-size: 0.9rem
+  line-height: 1.6
+
+.blog-tag-label
+  font-size: 0.75rem
+  letter-spacing: 0.18em
+  text-transform: uppercase
+  color: $primary
+
+.blog-tag-back
+  display: inline-block
+  margin-top: 1.25rem
+  color: $fg-muted
+  &:hover
+    color: $primary
+
+// -------------------------------------------------------------------
+// Blog article — class names come from src/templates/blog-post.js
+// -------------------------------------------------------------------
+.blog-hero
+  position: relative
+  overflow: hidden
+  padding: 4.5rem 0 3rem
+  border-bottom: 1px solid $border
+
+.blog-hero::after
+  content: ""
+  position: absolute
+  top: -70%
+  left: 15%
+  width: 640px
+  height: 440px
+  background: radial-gradient(ellipse at center, rgba(161, 0, 255, 0.13) 0%, transparent 70%)
+  pointer-events: none
+
+.blog-hero-content
+  position: relative
+  z-index: 1
+  max-width: $container
+  margin: 0 auto
+  padding: 0 1.5rem
+  display: grid
+  gap: 2.5rem
+  align-items: center
+  &:has(.blog-hero-image)
+    grid-template-columns: 1.25fr 1fr
+    @media (max-width: $bp-md)
+      grid-template-columns: 1fr
+
+.blog-hero-title
+  font-size: clamp(2rem, 4.2vw, 3.25rem)
+  letter-spacing: -0.03em
+  line-height: 1.06
+  max-width: 20ch
+
+.blog-hero-meta
+  display: flex
+  align-items: center
+  gap: 0.9rem
+  margin-top: 2rem
+
+.author-avatar
+  width: 44px
+  height: 44px
+  border-radius: 50%
+  object-fit: cover
+  flex-shrink: 0
+
+.author-name
+  font-size: 0.95rem
+  font-weight: 600
+  color: $fg
+
+.publish-date
+  font-size: 0.85rem
+  color: $fg-muted
+
+.share-buttons
+  display: flex
+  align-items: center
+  gap: 0.6rem
+  margin-top: 2rem
+  a
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 34px
+    height: 34px
+    border: 1px solid $border-strong
+    border-radius: 50%
+    font-size: 0.85rem
+    color: $fg
+    transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease
+    &:hover
+      border-color: $primary
+      color: $primary
+      background: rgba(161, 0, 255, 0.08)
+
+.share-label
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.18em
+  color: $fg-muted
+
+.blog-hero-image img
+  width: 100%
+  border-radius: $radius-lg
+  border: 1px solid $border
+
+// Article body + table of contents
+.blog-content-area
+  padding: 4rem 0 5rem
+
+.blog-content-wrapper
+  max-width: $container
+  margin: 0 auto
+  padding: 0 1.5rem
+  display: grid
+  grid-template-columns: 240px minmax(0, 1fr)
+  gap: 4rem
+  align-items: start
+  @media (max-width: $bp-lg)
+    grid-template-columns: 1fr
+    gap: 2.5rem
+
+.blog-toc
+  position: sticky
+  top: calc(#{$nav-height} + 2rem)
+  padding: 1.5rem
+  border: 1px solid $border
+  border-radius: $radius-lg
+  background: rgba(255, 255, 255, 0.015)
+  @media (max-width: $bp-lg)
+    position: static
+  h4
+    margin: 0 0 1rem
+    font-size: 0.65rem
+    font-weight: 600
+    letter-spacing: 0.18em
+    color: $fg-muted
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+    display: grid
+    gap: 0.6rem
+  a
+    font-size: 0.85rem
+    line-height: 1.45
+    color: $fg-muted
+    &:hover
+      color: $primary
+
+.blog-body
+  min-width: 0
+  color: $fg-muted
+  font-size: 1.0625rem
+  line-height: 1.8
+  h2
+    margin: 3rem 0 1rem
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem)
+    letter-spacing: -0.02em
+    line-height: 1.2
+    color: $fg
+    scroll-margin-top: calc(#{$nav-height} + 1rem)
+  h3
+    margin: 2.25rem 0 0.75rem
+    font-size: 1.2rem
+    letter-spacing: -0.015em
+    color: $fg
+    scroll-margin-top: calc(#{$nav-height} + 1rem)
+  > p:first-child
+    font-size: 1.15rem
+    color: $fg
+  p
+    margin: 0 0 1.5rem
+  strong
+    color: $fg
+    font-weight: 650
+  em
+    color: $fg-muted
+  a
+    color: $primary
+    border-bottom: 1px solid rgba(161, 0, 255, 0.4)
+    &:hover
+      border-color: $primary
+  ul, ol
+    margin: 0 0 1.5rem
+    padding-left: 1.35rem
+  li
+    margin-bottom: 0.7rem
+    &::marker
+      color: $primary
+  hr
+    margin: 3rem 0
+    border: none
+    border-top: 1px solid $border
+  blockquote
+    margin: 2rem 0
+    padding: 1.25rem 1.5rem
+    border-left: 2px solid $primary
+    border-radius: 0 $radius-sm $radius-sm 0
+    background: rgba(161, 0, 255, 0.06)
+    color: $fg
+    p:last-child
+      margin-bottom: 0
+  code
+    font-family: $font-mono
+    font-size: 0.88em
+    padding: 0.15em 0.4em
+    border-radius: 4px
+    background: rgba(255, 255, 255, 0.07)
+    color: $fg
+  pre
+    margin: 0 0 1.75rem
+    border-radius: $radius-lg
+    border: 1px solid $border
+    code
+      background: none
+      padding: 0
+  img
+    border-radius: $radius-lg
+    margin: 2rem 0
+  table
+    width: 100%
+    margin: 0 0 2rem
+    border-collapse: collapse
+    font-size: 0.92rem
+    display: block
+    overflow-x: auto
+  th, td
+    padding: 0.85rem 1rem
+    border: 1px solid $border
+    text-align: left
+    vertical-align: top
+  th
+    background: rgba(255, 255, 255, 0.04)
+    color: $fg
+    font-weight: 600
+  tbody tr:hover
+    background: rgba(255, 255, 255, 0.015)
+
+// Tags band
+.blog-tags-band
+  border-top: 1px solid $border
+  padding: 2.5rem 0
+
+.blog-tags-inner
+  max-width: $container
+  margin: 0 auto
+  padding: 0 1.5rem
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  gap: 1rem
+  h4
+    margin: 0
+    font-size: 0.7rem
+    font-weight: 600
+    letter-spacing: 0.18em
+    text-transform: uppercase
+    color: $fg-muted
+
+.blog-tags-list
+  display: flex
+  flex-wrap: wrap
+  gap: 0.6rem
+
+.blog-tag-link
+  padding: 0.4rem 0.85rem
+  border: 1px solid $border-strong
+  border-radius: $radius-pill
+  font-size: 0.82rem
+  color: $fg
+  &:hover
+    border-color: $primary
+    color: $primary
+    background: rgba(161, 0, 255, 0.08)
+
+// Blog CTA
+.blog-cta-section
+  position: relative
+  overflow: hidden
+  padding: 5rem 1.5rem
+  border-top: 1px solid $border
+  text-align: center
+  &::after
+    content: ""
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 700px
+    height: 340px
+    background: radial-gradient(ellipse at center, rgba(161, 0, 255, 0.14) 0%, transparent 70%)
+    pointer-events: none
+  h2
+    position: relative
+    z-index: 1
+    max-width: 24ch
+    margin: 0 auto
+    font-size: clamp(1.6rem, 3vw, 2.4rem)
+    letter-spacing: -0.025em
+  p
+    position: relative
+    z-index: 1
+    max-width: 60ch
+    margin: 1.25rem auto 2.25rem
+    color: $fg-muted
+    line-height: 1.7
+  .btn
+    position: relative
+    z-index: 1
+
+// -------------------------------------------------------------------
+// 404
+// -------------------------------------------------------------------
+.notfound
+  padding: 8rem 0
+  text-align: center
