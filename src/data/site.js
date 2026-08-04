@@ -1,7 +1,7 @@
 // Shared site chrome data for Multiplier Partners (MXP)
 
 export const contact = {
-  email: "matt@mxp.llc",
+  email: "matt@multiplierpartners.ai",
   linkedin: "https://www.linkedin.com/in/matt-teeple-059ab8174",
 };
 

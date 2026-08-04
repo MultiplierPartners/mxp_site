@@ -1050,6 +1050,36 @@ a.card:hover
   height: 0
   overflow: hidden
 
+// Shown after Netlify redirects back with ?submitted=true
+.form-success
+  padding: 0.5rem 0
+
+.form-success__title
+  display: flex
+  align-items: center
+  gap: 0.75rem
+  font-size: 1.5rem
+  font-weight: 600
+  letter-spacing: -0.02em
+  margin: 0 0 1rem
+  &::before
+    content: ""
+    flex-shrink: 0
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background: $mxp-green
+    box-shadow: 0 0 0 4px rgba(25, 230, 140, 0.18)
+
+.form-success p
+  margin: 0 0 1rem
+  color: rgba(245, 245, 242, 0.8)
+  line-height: 1.7
+  a
+    color: $primary
+    &:hover
+      text-decoration: underline
+
 .field-grid
   display: grid
   gap: 0 1.25rem
