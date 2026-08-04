@@ -5,6 +5,7 @@ date: 2026-07-21T00:00:00.000Z
 author: Matt Teeple
 description: "A placid surface with dynamic undercurrents. Big Tech's AI buildout has crossed from a spending story into a financing story — and for enterprises, that makes it a due-diligence issue."
 featuredpost: true
+featuredimage: /img/funding-challenges.jpg
 category: The AI Edge
 tags:
   - The AI Edge

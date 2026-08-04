@@ -5,6 +5,7 @@ date: 2026-06-15T00:00:00.000Z
 author: Matt Teeple
 description: "Why Agentic AI Ambitions Are Hitting a Wall — and What Separates the 12% Who Break Through"
 featuredpost: true
+featuredimage: /img/roi-reckoning.jpg
 category: The AI Edge
 tags:
   - The AI Edge
