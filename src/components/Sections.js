@@ -74,7 +74,17 @@ export const PageHero = ({ eyebrow, title, lede, crumb }) => (
 );
 
 // Card that links out when `to` is provided, otherwise renders as a plain card
-export const Card = ({ to, num, category, badge, title, text, cta, meta }) => {
+export const Card = ({
+  to,
+  num,
+  category,
+  badge,
+  title,
+  text,
+  cta,
+  ctaTone,
+  meta,
+}) => {
   const inner = (
     <>
       {(category || badge) && (
@@ -87,7 +97,11 @@ export const Card = ({ to, num, category, badge, title, text, cta, meta }) => {
       <h3 className="card__title">{title}</h3>
       <p className="card__text">{text}</p>
       {meta && <p className="card__meta">{meta}</p>}
-      {cta && <span className="card__cta">{cta}</span>}
+      {cta && (
+        <span className={`card__cta${ctaTone ? ` card__cta--${ctaTone}` : ""}`}>
+          {cta}
+        </span>
+      )}
     </>
   );
 

@@ -21,7 +21,8 @@ const SolutionsPage = () => (
               to={s.slug}
               title={s.title}
               text={s.text}
-              cta={s.slug ? "Read more →" : null}
+              cta="Read more →"
+              ctaTone="green"
             />
           ))}
         </CardGrid>

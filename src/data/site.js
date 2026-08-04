@@ -76,26 +76,32 @@ export const solutions = [
   },
   {
     title: "AI Risk Assurance for the Board",
+    slug: "/contact/",
     text: "Give the board a credible, repeatable view of agent identity, governance, controls, and risk reduction across the enterprise.",
   },
   {
     title: "Shadow AI Discovery & Remediation",
+    slug: "/contact/",
     text: "Find autonomous AI use you did not authorize, attribute it to identities, classify the risk, and remediate without freezing the business.",
   },
   {
     title: "Agent Identity for Customer & Revenue Operations",
+    slug: "/contact/",
     text: "Apply autonomous agents safely inside revenue, support, and customer-facing operations — with the identity, audit, and compliance controls boards expect.",
   },
   {
     title: "Agentic AI for Security Operations",
+    slug: "/contact/",
     text: "Augment security operations with governed autonomous agents — detection, triage, and response — with identity and oversight by design.",
   },
   {
     title: "AI Identity & Access Modernization",
+    slug: "/contact/",
     text: "Bring identity, authorization, audit, and machine trust up to the standard autonomous agents require.",
   },
   {
     title: "AI Data Readiness",
+    slug: "/contact/",
     text: "Build the curated, permissioned, observable knowledge layer autonomous agents actually need — scoped to identity, not to dashboards.",
   },
 ];
