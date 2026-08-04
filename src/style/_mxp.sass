@@ -1228,16 +1228,18 @@ a.card:hover
 // -------------------------------------------------------------------
 // Blog article — class names come from src/templates/blog-post.js
 // -------------------------------------------------------------------
+// Note: no `overflow: hidden` here — it would clip the Copy page menu.
+// The glow is kept inside the section's own box instead.
 .blog-hero
   position: relative
-  overflow: hidden
   padding: 4.5rem 0 3rem
   border-bottom: 1px solid $border
 
 .blog-hero::after
   content: ""
   position: absolute
-  top: -70%
+  z-index: 0
+  top: 0
   left: 15%
   width: 640px
   height: 440px
@@ -1246,7 +1248,7 @@ a.card:hover
 
 .blog-hero-content
   position: relative
-  z-index: 1
+  z-index: 2
   max-width: $container
   margin: 0 auto
   padding: 0 1.5rem
@@ -1285,6 +1287,106 @@ a.card:hover
 .publish-date
   font-size: 0.85rem
   color: $fg-muted
+
+// -------------------------------------------------------------------
+// "Copy page" / Use-with-AI split button + menu
+// -------------------------------------------------------------------
+.blog-hero-actions
+  margin-top: 2rem
+
+.blog-listing-actions
+  margin-top: 2rem
+
+.page-actions
+  position: relative
+  display: inline-block
+
+.page-actions__split
+  display: inline-flex
+  align-items: stretch
+  border: 1px solid $border-strong
+  border-radius: 8px
+  background: rgba(255, 255, 255, 0.05)
+  overflow: hidden
+
+.page-actions__primary, .page-actions__toggle
+  display: inline-flex
+  align-items: center
+  gap: 0.5rem
+  padding: 0.6rem 0.9rem
+  background: none
+  border: none
+  color: $fg
+  font-family: inherit
+  font-size: 0.85rem
+  font-weight: 500
+  cursor: pointer
+  transition: background 0.15s ease
+  &:hover
+    background: rgba(255, 255, 255, 0.08)
+
+.page-actions__primary
+  border-right: 1px solid $border-strong
+
+.page-actions__menu
+  position: absolute
+  top: calc(100% + 0.5rem)
+  left: 0
+  z-index: 60
+  width: 19rem
+  max-width: calc(100vw - 3rem)
+  padding: 0.4rem
+  border: 1px solid $border-strong
+  border-radius: 12px
+  background: $bg-card
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55)
+
+.page-actions__item
+  display: flex
+  align-items: flex-start
+  gap: 0.7rem
+  width: 100%
+  padding: 0.6rem 0.65rem
+  border: none
+  border-radius: 8px
+  background: none
+  color: $fg
+  font-family: inherit
+  font-size: 0.85rem
+  text-align: left
+  cursor: pointer
+  transition: background 0.15s ease
+  &:hover
+    background: rgba(255, 255, 255, 0.07)
+
+.page-actions__icon
+  flex-shrink: 0
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 1.6rem
+  height: 1.6rem
+  border: 1px solid $border
+  border-radius: 6px
+  font-size: 0.7rem
+  color: $fg-muted
+
+.page-actions__label
+  display: block
+  font-weight: 500
+  line-height: 1.3
+
+.page-actions__hint
+  display: block
+  margin-top: 0.15rem
+  color: $fg-muted
+  font-size: 0.75rem
+  line-height: 1.35
+
+.page-actions__sep
+  height: 1px
+  margin: 0.4rem 0.25rem
+  background: $border
 
 .share-buttons
   display: flex

@@ -102,3 +102,48 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
+/**
+ * Publish a plain-Markdown copy of every blog post alongside its HTML page,
+ * e.g. /blog/2026-06-15-the-roi-reckoning.md
+ *
+ * This is what the "Copy page" / "View as Markdown" actions read, and it gives
+ * language models a clean source to ingest without stripping page chrome.
+ */
+exports.onPostBuild = async () => {
+  const fs = require("fs");
+  const srcDir = path.resolve("src/pages/blog");
+  const outDir = path.resolve("public/blog");
+
+  if (!fs.existsSync(srcDir)) return;
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const files = fs.readdirSync(srcDir).filter((f) => f.endsWith(".md"));
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(srcDir, file), "utf8");
+    const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    const body = match ? match[2].trim() : raw.trim();
+
+    const field = (key) => {
+      const m = match && match[1].match(new RegExp(`^${key}:\\s*(.+)$`, "m"));
+      return m ? m[1].trim().replace(/^["']|["']$/g, "") : "";
+    };
+
+    const slug = file.replace(/\.md$/, "");
+    const header = [
+      `# ${field("title")}`,
+      "",
+      `Author: ${field("author")}`,
+      `Date: ${field("date").slice(0, 10)}`,
+      `Source: https://multiplierpartners.ai/blog/${slug}/`,
+      "",
+      "---",
+      "",
+    ].join("\n");
+
+    fs.writeFileSync(path.join(outDir, `${slug}.md`), header + body + "\n");
+  }
+
+  console.info(`Published ${files.length} Markdown copies to /blog/*.md`);
+};

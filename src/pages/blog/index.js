@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import SEO from "../../components/SEO";
 import BlogRoll from "../../components/BlogRoll";
+import PageActions from "../../components/PageActions";
 
 const BlogIndexPage = () => (
   <Layout>
@@ -14,6 +15,9 @@ const BlogIndexPage = () => (
           identity, governance, machine trust, and the economics underneath the
           enterprise AI buildout.
         </p>
+        <div className="blog-listing-actions">
+          <PageActions pagePath="/blog/" />
+        </div>
       </div>
       <BlogRoll />
     </div>

@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import { HTMLContentWithCodeCopy } from "../components/Content";
 import TableOfContents from "../components/TableOfContents";
+import PageActions from "../components/PageActions";
 import { getAuthor } from "../data/authors";
 
 const BlogPostTemplate = ({
@@ -17,6 +18,8 @@ const BlogPostTemplate = ({
   category,
   featuredimage,
   tags,
+  pagePath,
+  markdownPath,
 }) => {
   const author = getAuthor(authorName);
 
@@ -55,6 +58,9 @@ const BlogPostTemplate = ({
                 <br />
                 <span className="publish-date">Published: {date}</span>
               </div>
+            </div>
+            <div className="blog-hero-actions">
+              <PageActions markdownPath={markdownPath} pagePath={pagePath} />
             </div>
             <div className="share-buttons">
               <span className="share-label">SHARE:</span>
@@ -155,6 +161,8 @@ const BlogPost = ({ data }) => {
         category={post.frontmatter.category}
         featuredimage={post.frontmatter.featuredimage}
         tags={post.frontmatter.tags}
+        pagePath={post.fields.slug}
+        markdownPath={`${post.fields.slug.replace(/\/$/, "")}.md`}
       />
     </Layout>
   );
@@ -186,6 +194,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
