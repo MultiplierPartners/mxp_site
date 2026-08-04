@@ -37,11 +37,7 @@ const BlogRoll = () => {
     <div className="blog-grid">
       {posts &&
         posts.map(({ node: post }) => (
-          <Link
-            key={post.id}
-            className="blog-card"
-            to={post.fields.slug}
-          >
+          <Link key={post.id} className="blog-card" to={post.fields.slug}>
             <div className="blog-card-image">
               {post.frontmatter.featuredimage ? (
                 <img

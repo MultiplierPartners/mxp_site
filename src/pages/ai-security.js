@@ -79,12 +79,6 @@ const pillars = [
 
 const AiSecurityPage = () => (
   <Layout>
-    <SEO
-      title="AI Security | Multiplier Partners"
-      description="Identity-first AI security. Agent identity, machine trust, prompt injection defense, governance, shadow AI, and lifecycle continuity for autonomous agents."
-      pathname="/ai-security/"
-    />
-
     <PageHero
       eyebrow="AI Security"
       title="Identity-first AI security. Treat agents as first-class citizens."
@@ -121,6 +115,14 @@ const AiSecurityPage = () => (
       secondary={{ label: "See our services", to: "/services/" }}
     />
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="AI Security | Multiplier Partners"
+    description="Identity-first AI security. Agent identity, machine trust, prompt injection defense, governance, shadow AI, and lifecycle continuity for autonomous agents."
+    pathname="/ai-security/"
+  />
 );
 
 export default AiSecurityPage;

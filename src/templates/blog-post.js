@@ -51,9 +51,7 @@ const BlogPostTemplate = ({
                 </div>
               )}
               <div className="author-info">
-                <span className="author-name">
-                  Written by: {author.name}
-                </span>
+                <span className="author-name">Written by: {author.name}</span>
                 <br />
                 <span className="publish-date">Published: {date}</span>
               </div>
@@ -148,11 +146,6 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={`${post.frontmatter.title} | Multiplier Partners`}
-        description={post.frontmatter.description}
-        article={true}
-      />
       <BlogPostTemplate
         content={post.html}
         title={post.frontmatter.title}
@@ -171,6 +164,19 @@ BlogPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
+};
+
+export const Head = ({ data, location }) => {
+  const post = data.markdownRemark;
+  return (
+    <SEO
+      title={`${post.frontmatter.title} | Multiplier Partners`}
+      description={post.frontmatter.description}
+      image={post.frontmatter.featuredimage}
+      pathname={location.pathname}
+      article
+    />
+  );
 };
 
 export default BlogPost;

@@ -90,12 +90,6 @@ const pad = (n) => String(n).padStart(2, "0");
 
 const PlaybookPage = () => (
   <Layout>
-    <SEO
-      title="The Startup Playbook | Multiplier Partners"
-      description="Twenty short consumable chapters on the keys to building startup success from first funding to delivering enterprise solutions at scale."
-      pathname="/enterprise-ai-playbook/"
-    />
-
     <PageHero
       eyebrow="The Startup Playbook"
       crumb="The Startup Playbook"
@@ -124,6 +118,14 @@ const PlaybookPage = () => (
       secondary={{ label: "About Multiplier Partners", to: "/about/" }}
     />
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="The Startup Playbook | Multiplier Partners"
+    description="Twenty short consumable chapters on the keys to building startup success from first funding to delivering enterprise solutions at scale."
+    pathname="/enterprise-ai-playbook/"
+  />
 );
 
 export default PlaybookPage;

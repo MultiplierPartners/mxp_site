@@ -6,12 +6,6 @@ import { services } from "../data/site";
 
 const ServicesPage = () => (
   <Layout>
-    <SEO
-      title="Services | Multiplier Partners"
-      description="Identity, governance, and continuity for autonomous AI. Advisory services spanning agent identity, governance, architecture, cybersecurity, and data."
-      pathname="/services/"
-    />
-
     <PageHero
       eyebrow="Services"
       title="Identity, governance, and continuity for autonomous AI."
@@ -41,6 +35,14 @@ const ServicesPage = () => (
       secondary={{ label: "About Multiplier Partners", to: "/about/" }}
     />
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="Services | Multiplier Partners"
+    description="Identity, governance, and continuity for autonomous AI. Advisory services spanning agent identity, governance, architecture, cybersecurity, and data."
+    pathname="/services/"
+  />
 );
 
 export default ServicesPage;

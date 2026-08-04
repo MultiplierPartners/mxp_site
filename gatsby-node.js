@@ -83,9 +83,7 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 
   // Create tag pages
-  const tags = _.uniq(
-    posts.flatMap(({ node }) => node.frontmatter.tags || [])
-  );
+  const tags = _.uniq(posts.flatMap(({ node }) => node.frontmatter.tags || []));
   tags.forEach((tag) => {
     createPage({
       path: `/tags/${_.kebabCase(tag)}/`,

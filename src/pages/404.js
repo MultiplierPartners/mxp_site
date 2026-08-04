@@ -5,7 +5,6 @@ import SEO from "../components/SEO";
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="Page not found | Multiplier Partners" />
     <section className="notfound">
       <div className="container">
         <p className="eyebrow eyebrow--plain">404</p>
@@ -21,5 +20,7 @@ const NotFoundPage = () => (
     </section>
   </Layout>
 );
+
+export const Head = () => <SEO title="Page not found | Multiplier Partners" />;
 
 export default NotFoundPage;

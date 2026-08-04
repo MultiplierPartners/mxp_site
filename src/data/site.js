@@ -103,12 +103,18 @@ export const solutions = [
 export const footerColumns = [
   {
     heading: "Services",
-    links: services.map((s) => ({ label: s.title, to: s.slug || "/services/" })),
+    links: services.map((s) => ({
+      label: s.title,
+      to: s.slug || "/services/",
+    })),
   },
   {
     heading: "Solutions",
     links: [
-      { label: "Scale AI Beyond Pilots", to: "/solutions/scale-ai-beyond-pilots/" },
+      {
+        label: "Scale AI Beyond Pilots",
+        to: "/solutions/scale-ai-beyond-pilots/",
+      },
       { label: "Secure AI Adoption", to: "/solutions/secure-ai-adoption/" },
       { label: "Govern AI Agents", to: "/solutions/govern-ai-agents/" },
       { label: "AI Security Hub", to: "/ai-security/" },

@@ -1,26 +1,8 @@
+const siteMetadata = require("./site-meta");
+
 module.exports = {
-  siteMetadata: {
-    title:
-      "Multiplier Partners | Identity for Agentic, Continuity, and Enterprise",
-    description:
-      "Multiplier Partners is an advisory and GTM consulting firm helping enterprises operationalize identity, governance, and machine-trust for autonomous AI agents at scale — credentials, least privilege, audit, and lifecycle continuity.",
-    siteUrl: "https://multiplierpartners.ai",
-    image: "/img/mxp-og.png",
-    keywords: [
-      "agent identity",
-      "agentic AI",
-      "AI governance",
-      "machine trust",
-      "identity continuity",
-      "AI security advisory",
-      "autonomous agents",
-      "least privilege",
-      "Multiplier Partners",
-      "MXP",
-    ],
-  },
+  siteMetadata,
   plugins: [
-    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-sass",
       options: {

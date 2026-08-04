@@ -1,7 +1,7 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 
 const TagRoute = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -10,7 +10,6 @@ const TagRoute = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Helmet title={`${tag} | Multiplier Partners`} />
       <div className="blog-listing">
         <div className="blog-listing-header blog-tag-header">
           <p className="blog-tag-label">Tag</p>
@@ -25,11 +24,7 @@ const TagRoute = ({ data, pageContext }) => {
         </div>
         <div className="blog-grid">
           {posts.map(({ node: post }) => (
-            <Link
-              key={post.id}
-              className="blog-card"
-              to={post.fields.slug}
-            >
+            <Link key={post.id} className="blog-card" to={post.fields.slug}>
               <div className="blog-card-image">
                 {post.frontmatter.featuredimage ? (
                   <img
@@ -44,8 +39,7 @@ const TagRoute = ({ data, pageContext }) => {
                 ) : (
                   <div
                     style={{
-                      background:
-                        "linear-gradient(135deg, #111827, #0A0A0A)",
+                      background: "linear-gradient(135deg, #111827, #0A0A0A)",
                       width: "100%",
                       height: "100%",
                     }}
@@ -56,9 +50,7 @@ const TagRoute = ({ data, pageContext }) => {
                 </span>
               </div>
               <div className="blog-card-content">
-                <h3 className="blog-card-title">
-                  {post.frontmatter.title}
-                </h3>
+                <h3 className="blog-card-title">{post.frontmatter.title}</h3>
                 <p className="blog-card-excerpt">{post.excerpt}</p>
               </div>
             </Link>
@@ -68,6 +60,14 @@ const TagRoute = ({ data, pageContext }) => {
     </Layout>
   );
 };
+
+export const Head = ({ pageContext, location }) => (
+  <SEO
+    title={`${pageContext.tag} | Multiplier Partners`}
+    description={`Posts from Multiplier Partners tagged “${pageContext.tag}”.`}
+    pathname={location.pathname}
+  />
+);
 
 export default TagRoute;
 

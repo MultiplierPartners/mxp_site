@@ -6,12 +6,6 @@ import { solutions } from "../data/site";
 
 const SolutionsPage = () => (
   <Layout>
-    <SEO
-      title="Solutions | Multiplier Partners"
-      description="Outcomes for executive sponsors deploying autonomous AI — governing agents, scaling identity-first AI, reducing risk, and reporting credibly to the board."
-      pathname="/solutions/"
-    />
-
     <PageHero
       eyebrow="Solutions"
       title="Outcomes for executive sponsors deploying autonomous AI."
@@ -40,6 +34,14 @@ const SolutionsPage = () => (
       secondary={{ label: "See our services", to: "/services/" }}
     />
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="Solutions | Multiplier Partners"
+    description="Outcomes for executive sponsors deploying autonomous AI — governing agents, scaling identity-first AI, reducing risk, and reporting credibly to the board."
+    pathname="/solutions/"
+  />
 );
 
 export default SolutionsPage;

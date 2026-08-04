@@ -1,11 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import {
-  contact,
-  footerColumns,
-  footerBlurb,
-  tagline,
-} from "../data/site";
+import { contact, footerColumns, footerBlurb, tagline } from "../data/site";
 
 const isInternal = (to) => to && to.startsWith("/");
 

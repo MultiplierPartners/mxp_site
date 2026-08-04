@@ -35,7 +35,7 @@ const AgentsArt = () => {
               fill={isV ? V : LINE}
             />
           );
-        })
+        }),
       )}
     </Svg>
   );

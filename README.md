@@ -10,7 +10,6 @@ Marketing site for [multiplierpartners.ai](https://multiplierpartners.ai) — Ga
 | Node | `v20.15.0` (pinned in `.nvmrc`, `package.json` engines, and `netlify.toml`) |
 | Styling | Sass (`.sass` indented syntax) — tokens in `src/style/variables.sass` |
 | Content | Markdown + `gatsby-transformer-remark` for blog posts |
-| CMS | Decap CMS at `/admin` (blog collection only) |
 | Hosting | Netlify (`@netlify/plugin-gatsby`) |
 
 ## Local development
@@ -27,7 +26,7 @@ Otherwise, with Node 20.15.0 installed:
 npm ci --legacy-peer-deps && npm run develop
 ```
 
-The dev server runs on <http://localhost:8000>. The CMS proxy (`npx decap-server`) backs `/admin` when `local_backend: true`.
+The dev server runs on <http://localhost:8000>.
 
 ## Scripts
 
@@ -37,7 +36,6 @@ The dev server runs on <http://localhost:8000>. The CMS proxy (`npx decap-server
 | `npm run develop:fast` | Start without cleaning `.cache` |
 | `npm run build` | Clean + production build to `public/` |
 | `npm run serve` | Serve the production build |
-| `npm run cms` | Local Decap CMS backend proxy |
 | `npm run format` | Prettier across js/json/md |
 
 `node scripts/build-blog-data.js` generates `netlify/functions/blog-data.json`, which backs the MCP endpoint function. It runs as part of the Netlify build command.
@@ -70,7 +68,7 @@ src/
   templates/    blog-post.js, tags.js
 ```
 
-Marketing pages are React components (content co-located in `src/data/site.js` and the page files). Blog posts are markdown and editable through Decap CMS.
+Marketing pages are React components (content co-located in `src/data/site.js` and the page files). Blog posts are markdown under `src/pages/blog/`, edited in the repo.
 
 ## Dependency notes
 
@@ -90,10 +88,10 @@ Two pins exist purely to keep the Gatsby 5 build working. Don't remove them casu
 "graphql": "^16.14.2"
 ```
 
-`decap-cms-app` depends on graphql 15 (via `decap-cms-backend-github` → Apollo Client 2). Without this pin npm hoists graphql 15 to the root and Gatsby ends up with a *second*, nested copy at v16. Two copies break `instanceof` checks inside `graphql-compose`, and the build dies with:
+Gatsby's schema build fails if more than one copy of `graphql` ends up in the tree — `graphql-compose` does `instanceof` checks, so a second nested copy produces:
 
 ```
 Cannot create as TypeComposer the following value: GraphQLScalarType({ name: "Date", ... })
 ```
 
-Declaring graphql 16 directly claims the root slot for Gatsby and lets Decap nest its own 15.
+This originally happened because Decap CMS pulled graphql 15 and won the root hoist. Decap has since been removed, so nothing currently competes for that slot — but declaring graphql 16 explicitly keeps Gatsby's copy at the root and stops the same failure recurring if a dependency that wants graphql 15 is added later.

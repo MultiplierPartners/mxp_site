@@ -107,8 +107,6 @@ const autonomyRequirements = [
 
 const IndexPage = () => (
   <Layout>
-    <SEO pathname="/" />
-
     <section className="hero">
       <div className="container hero__inner">
         <p className="eyebrow eyebrow--plain">
@@ -344,5 +342,7 @@ const IndexPage = () => (
     />
   </Layout>
 );
+
+export const Head = () => <SEO pathname="/" />;
 
 export default IndexPage;

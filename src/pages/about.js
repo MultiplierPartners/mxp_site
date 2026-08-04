@@ -1,7 +1,13 @@
 import React from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { PageHero, Section, Card, CardGrid, CtaBand } from "../components/Sections";
+import {
+  PageHero,
+  Section,
+  Card,
+  CardGrid,
+  CtaBand,
+} from "../components/Sections";
 
 const operatingPrinciples = [
   {
@@ -23,19 +29,17 @@ const operatingPrinciples = [
 
 const AboutPage = () => (
   <Layout>
-    <SEO
-      title="About | Multiplier Partners"
-      description="A boutique advisory firm built for the autonomous AI era — senior operators giving autonomous AI an identity, a scope, an audit trail, and a lifecycle."
-      pathname="/about/"
-    />
-
     <PageHero
       eyebrow="About"
       title="A boutique advisory firm built for the autonomous AI era."
       lede="Multiplier Partners exists to give autonomous AI an identity, a scope, an audit trail, and a lifecycle — across strategy, architecture, governance, data, and machine trust."
     />
 
-    <Section eyebrow="What we are" title="Senior operators, not generalists." split>
+    <Section
+      eyebrow="What we are"
+      title="Senior operators, not generalists."
+      split
+    >
       <div className="prose">
         <p>
           Multiplier Partners is built by professionals who have helped build
@@ -116,6 +120,14 @@ const AboutPage = () => (
       secondary={{ label: "See our services", to: "/services/" }}
     />
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="About | Multiplier Partners"
+    description="A boutique advisory firm built for the autonomous AI era — senior operators giving autonomous AI an identity, a scope, an audit trail, and a lifecycle."
+    pathname="/about/"
+  />
 );
 
 export default AboutPage;

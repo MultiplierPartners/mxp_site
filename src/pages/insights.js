@@ -27,24 +27,20 @@ const upcoming = [
   },
   {
     category: "Strategy",
-    title: "Sequencing identity-first AI investment without burning the program",
+    title:
+      "Sequencing identity-first AI investment without burning the program",
     text: "A pragmatic 12–24 month investment sequence that boards and operators both believe in — anchored in identity, governance, and continuity.",
   },
   {
     category: "Operations",
-    title: "When governed autonomy works in the enterprise — and when it does not",
+    title:
+      "When governed autonomy works in the enterprise — and when it does not",
     text: "The patterns that produce real value from autonomous agents, and the patterns that quietly produce identity and compliance risk.",
   },
 ];
 
 const InsightsPage = () => (
   <Layout>
-    <SEO
-      title="Insights | Multiplier Partners"
-      description="Editorial perspective on identity-first AI, agent governance, machine trust, lifecycle continuity, and the operating practices required to deploy autonomous AI safely."
-      pathname="/insights/"
-    />
-
     <PageHero
       eyebrow="Insights"
       title="The thinking behind Multiplier Partners."
@@ -95,6 +91,14 @@ const InsightsPage = () => (
       secondary={{ label: "Read the Playbook", to: "/enterprise-ai-playbook/" }}
     />
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="Insights | Multiplier Partners"
+    description="Editorial perspective on identity-first AI, agent governance, machine trust, lifecycle continuity, and the operating practices required to deploy autonomous AI safely."
+    pathname="/insights/"
+  />
 );
 
 export default InsightsPage;

@@ -23,12 +23,6 @@ const topics = [
 
 const ContactPage = () => (
   <Layout>
-    <SEO
-      title="Contact | Multiplier Partners"
-      description="Talk to Multiplier Partners. Most engagements start with an AI Identity & Risk Assessment."
-      pathname="/contact/"
-    />
-
     <PageHero
       eyebrow="Contact"
       title="Talk to Multiplier Partners."
@@ -73,7 +67,13 @@ const ContactPage = () => (
               {/* Honeypot — hidden from users, catches bots */}
               <div className="visually-hidden" aria-hidden="true">
                 <label htmlFor="website">Website</label>
-                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
 
               <div className="field-grid">
@@ -115,7 +115,8 @@ const ContactPage = () => (
 
               <div className="field">
                 <label htmlFor="message">
-                  What are you trying to solve? <span className="field__req">*</span>
+                  What are you trying to solve?{" "}
+                  <span className="field__req">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -134,6 +135,14 @@ const ContactPage = () => (
       </div>
     </section>
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="Contact | Multiplier Partners"
+    description="Talk to Multiplier Partners. Most engagements start with an AI Identity & Risk Assessment."
+    pathname="/contact/"
+  />
 );
 
 export default ContactPage;

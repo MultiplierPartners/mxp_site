@@ -12,7 +12,11 @@ const Navbar = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <Link to="/" className="mxp-nav__brand" aria-label="Multiplier Partners home">
+        <Link
+          to="/"
+          className="mxp-nav__brand"
+          aria-label="Multiplier Partners home"
+        >
           <span className="mxp-nav__mark">MXP</span>
           <span className="mxp-nav__tagline">
             Delivering Enterprise Identity Continuity and Agentic Security
@@ -56,7 +60,11 @@ const Navbar = () => {
             Home
           </Link>
           {navLinks.map((item) => (
-            <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)}>
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => setMobileOpen(false)}
+            >
               {item.label}
             </Link>
           ))}

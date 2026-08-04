@@ -5,11 +5,6 @@ import BlogRoll from "../../components/BlogRoll";
 
 const BlogIndexPage = () => (
   <Layout>
-    <SEO
-      title="Blog | Multiplier Partners"
-      description="Field notes and executive briefings on identity-first AI, agent governance, machine trust, and the economics of the enterprise AI buildout."
-      pathname="/blog/"
-    />
     <div className="blog-listing">
       <div className="blog-listing-header">
         <p className="blog-tag-label">Blog</p>
@@ -23,6 +18,14 @@ const BlogIndexPage = () => (
       <BlogRoll />
     </div>
   </Layout>
+);
+
+export const Head = () => (
+  <SEO
+    title="Blog | Multiplier Partners"
+    description="Field notes and executive briefings on identity-first AI, agent governance, machine trust, and the economics of the enterprise AI buildout."
+    pathname="/blog/"
+  />
 );
 
 export default BlogIndexPage;

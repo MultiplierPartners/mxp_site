@@ -19,7 +19,7 @@ export const getAuthor = (name) => {
   return (
     authors[name] ||
     Object.values(authors).find(
-      (a) => a.slug === name.toLowerCase().replace(/\s+/g, "-")
+      (a) => a.slug === name.toLowerCase().replace(/\s+/g, "-"),
     ) || {
       name,
       slug: name.toLowerCase().replace(/\s+/g, "-"),
