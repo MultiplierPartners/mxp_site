@@ -54,7 +54,15 @@ const BlogPostTemplate = ({
                 </div>
               )}
               <div className="author-info">
-                <span className="author-name">Written by: {author.name}</span>
+                <span className="author-name">
+                  Written by:{" "}
+                  <Link
+                    className="author-name__link"
+                    to={`/authors/${kebabCase(author.name)}/`}
+                  >
+                    {author.name}
+                  </Link>
+                </span>
                 <br />
                 <span className="publish-date">Published: {date}</span>
               </div>

@@ -60,6 +60,7 @@ exports.createPages = async ({ actions, graphql }) => {
             frontmatter {
               tags
               templateKey
+              author
             }
           }
         }
@@ -89,6 +90,18 @@ exports.createPages = async ({ actions, graphql }) => {
       path: `/tags/${_.kebabCase(tag)}/`,
       component: path.resolve("src/templates/tags.js"),
       context: { tag },
+    });
+  });
+
+  // Create author archive pages
+  const authors = _.uniq(
+    posts.map(({ node }) => node.frontmatter.author).filter(Boolean),
+  );
+  authors.forEach((author) => {
+    createPage({
+      path: `/authors/${_.kebabCase(author)}/`,
+      component: path.resolve("src/templates/author.js"),
+      context: { author },
     });
   });
 };
