@@ -8,6 +8,15 @@ const authors = {
     linkedin: "https://www.linkedin.com/in/matt-teeple-059ab8174",
     twitter: "",
   },
+  "Nick Gamb": {
+    name: "Nick Gamb",
+    slug: "nick-gamb",
+    image: null,
+    title: "Field Engineering, Strata Identity · Founder, MindGarden",
+    bio: "Nick Gamb works on identity and agentic security, and is a co-author of UMA for Agents (U4A) with Eve Maler — a working proof of concept carrying User-Managed Access into the agent era.",
+    linkedin: "https://www.linkedin.com/in/nickgamb/",
+    twitter: "",
+  },
 };
 
 /**
