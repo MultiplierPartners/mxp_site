@@ -1284,6 +1284,55 @@ a.card:hover
   font-weight: 600
   color: $fg
 
+.author-name__link
+  border-bottom: 1px solid transparent
+  transition: color 0.18s ease, border-color 0.18s ease
+  &:hover
+    color: $primary
+    border-color: $primary
+
+// Author archive header
+.author-header
+  display: flex
+  align-items: center
+  gap: 1.1rem
+  margin: 0.75rem 0 1.5rem
+
+.author-header__avatar
+  width: 84px
+  height: 84px
+  border-radius: 50%
+  object-fit: cover
+  flex-shrink: 0
+
+.author-header__avatar--initial
+  display: flex
+  align-items: center
+  justify-content: center
+  background: $primary
+  color: $mxp-white
+  font-size: 2rem
+  font-weight: 700
+
+.author-header h1
+  margin: 0
+
+.author-header__title
+  margin: 0.4rem 0 0
+  color: $fg-muted
+  font-size: 0.95rem
+
+.author-header__count
+  margin-top: 1.25rem !important
+  color: $fg-muted
+  font-size: 0.875rem
+
+// `flex` (not inline-flex) so the "browse all posts" link below starts its own row
+.author-header__link
+  display: flex
+  width: fit-content
+  margin-top: 0.5rem
+
 .publish-date
   font-size: 0.85rem
   color: $fg-muted
