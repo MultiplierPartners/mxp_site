@@ -112,6 +112,14 @@ const SEO = ({
         name="keywords"
         content={(siteMetadata.keywords || []).join(", ")}
       />
+      {/* The plain author tag, separate from `article:author` below. This is
+          the one LinkedIn's Post Inspector reads — without it, it reports the
+          author as not found even though the Open Graph property is present.
+          Confirmed against the live sister site: adding this fixed it. */}
+      <meta
+        name="author"
+        content={author ? author.name : "Multiplier Partners"}
+      />
       <meta name="theme-color" content="#050505" />
       <link rel="canonical" href={seo.url} />
       {/* Let search results carry a full image and an untruncated snippet.
@@ -135,8 +143,13 @@ const SEO = ({
       {article && datePublished && (
         <meta property="article:published_time" content={datePublished} />
       )}
+      {/* ogp.me defines article:author as a profile reference, not a name —
+          the human-readable form is the `author` tag above. */}
       {article && author && (
-        <meta property="article:author" content={author.name} />
+        <meta
+          property="article:author"
+          content={author.linkedin || author.name}
+        />
       )}
       {article &&
         (tags || []).map((t) => (
