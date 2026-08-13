@@ -1,0 +1,48 @@
+# multiplierpartners.ai
+#
+# Everything published here is meant to be read and cited — by people and by
+# the crawlers reading on behalf of a language model.
+#
+# Those crawlers are named explicitly rather than left to the wildcard. The
+# wildcard already allows them; naming them is a statement of intent, so
+# nobody has to guess whether the omission was deliberate.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# The whole site in one fetch.
+Sitemap: https://multiplierpartners.ai/sitemap.xml
+
+# A guided index for language models lives at /llms.txt — see https://llmstxt.org
+# Every post is also available as Markdown at /blog/<slug>.md, and the site
+# speaks MCP at https://multiplierpartners.ai/mcp (tools: listBlogs, getBlog).
