@@ -190,6 +190,9 @@ export const Head = ({ data, location }) => {
       description={post.frontmatter.description}
       image={post.frontmatter.featuredimage}
       pathname={location.pathname}
+      author={getAuthor(post.frontmatter.author)}
+      datePublished={post.frontmatter.isoDate}
+      tags={post.frontmatter.tags}
       article
     />
   );
@@ -207,6 +210,9 @@ export const pageQuery = graphql`
       }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        # Structured data and article:published_time need ISO 8601, not the
+        # human form rendered in the byline.
+        isoDate: date
         title
         author
         description

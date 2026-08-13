@@ -1,0 +1,29 @@
+# Multiplier Partners
+
+> Multiplier Partners is an advisory and GTM consulting firm helping enterprises operationalize identity, governance, and machine-trust for autonomous AI agents at scale — credentials, least privilege, audit, and lifecycle continuity.
+
+An advisory and GTM consulting firm working on identity, governance and
+machine-trust for autonomous AI agents — credentials, least privilege,
+audit, and lifecycle continuity at enterprise scale.
+
+Every post below is available as plain Markdown by appending `.md` to its
+URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tools,
+`listBlogs` and `getBlog`, if you would rather read it that way.
+
+## Insights
+
+- [Let Them: A Developer's Guide to UMA for Agents](https://multiplierpartners.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a.md): The industry is fighting over how agents prove who they are. That is the wrong fight. The question that decides whether an agent economy works is whether the owner of a resource can set the terms — and U4A is what that looks like in running code.
+- [The AI Edge: Funding Challenges for the Leading Builders](https://multiplierpartners.ai/blog/2026-07-21-the-ai-edge-funding-challenges.md): A placid surface with dynamic undercurrents. Big Tech's AI buildout has crossed from a spending story into a financing story — and for enterprises, that makes it a due-diligence issue.
+- [The AI Infrastructure Valuation Paradox](https://multiplierpartners.ai/blog/2026-07-10-ai-infrastructure-valuation-paradox.md): What has bolstered AI infrastructure valuations in the public and private markets — and what makes those valuations vulnerable to repricing.
+- [The ROI Reckoning](https://multiplierpartners.ai/blog/2026-06-15-the-roi-reckoning.md): Why Agentic AI Ambitions Are Hitting a Wall — and What Separates the 12% Who Break Through
+
+## Pages
+
+- [Home](https://multiplierpartners.ai/): What the firm does and who it is for.
+- [Services](https://multiplierpartners.ai/services/): Advisory engagements.
+- [Solutions](https://multiplierpartners.ai/solutions/): Where those engagements are applied.
+- [AI Security](https://multiplierpartners.ai/ai-security/): Identity and trust for autonomous agents.
+- [Enterprise AI Playbook](https://multiplierpartners.ai/enterprise-ai-playbook/): The operating guide.
+- [Insights](https://multiplierpartners.ai/insights/): Longer-form analysis.
+- [About](https://multiplierpartners.ai/about/): Who we are.
+- [Contact](https://multiplierpartners.ai/contact/): How to reach us.

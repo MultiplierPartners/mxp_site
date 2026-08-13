@@ -117,6 +117,61 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 };
 
 /**
+ * Write public/sitemap.xml from the pages that were actually emitted.
+ *
+ * The routes are read off the built output — every public/**\/index.html is a
+ * page — rather than from `allSitePage`. That is deliberate: the obvious
+ * alternative, gatsby-plugin-sitemap, queries for `site.siteMetadata.siteUrl`
+ * and, when that lookup comes back empty, writes a zero-byte sitemap *without
+ * failing the build*. A silently empty sitemap is worse than none.
+ *
+ * Reading the filesystem also has the virtue of describing what shipped
+ * rather than what the build intended to ship.
+ */
+function writeSitemap({ fs, siteMeta }) {
+  const publicDir = path.resolve("public");
+
+  const walk = (dir) =>
+    fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) return walk(full);
+      return entry.name === "index.html" ? [path.dirname(full)] : [];
+    });
+
+  const paths = walk(publicDir)
+    .map((d) => {
+      const rel = path.relative(publicDir, d);
+      return rel === "" ? "/" : `/${rel.split(path.sep).join("/")}/`;
+    })
+    .filter((p) => !p.startsWith("/404"))
+    .sort();
+
+  if (paths.length === 0) {
+    throw new Error("sitemap: no pages found — refusing to write an empty one");
+  }
+
+  const urls = paths
+    .map((p) => {
+      const priority = p === "/" ? "1.0" : p.startsWith("/blog/") ? "0.8" : "0.7";
+      return [
+        "  <url>",
+        `    <loc>${siteMeta.siteUrl}${p}</loc>`,
+        "    <changefreq>weekly</changefreq>",
+        `    <priority>${priority}</priority>`,
+        "  </url>",
+      ].join("\n");
+    })
+    .join("\n");
+
+  fs.writeFileSync(
+    path.resolve("public/sitemap.xml"),
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+  );
+  console.info(`Wrote sitemap.xml with ${paths.length} URLs`);
+}
+
+/**
  * Publish a plain-Markdown copy of every blog post alongside its HTML page,
  * e.g. /blog/2026-06-15-the-roi-reckoning.md
  *
@@ -125,8 +180,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
  */
 exports.onPostBuild = async () => {
   const fs = require("fs");
+  const siteMeta = require("./site-meta");
   const srcDir = path.resolve("src/pages/blog");
   const outDir = path.resolve("public/blog");
+
+  // Independent of the Markdown twins below, and written first so that the
+  // early return when there are no posts cannot silently skip it.
+  writeSitemap({ fs, siteMeta });
 
   if (!fs.existsSync(srcDir)) return;
   fs.mkdirSync(outDir, { recursive: true });

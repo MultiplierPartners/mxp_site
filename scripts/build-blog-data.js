@@ -7,9 +7,12 @@
 
 const fs = require("fs");
 const path = require("path");
+const siteMetadata = require("../site-meta");
 
 const BLOG_DIR = path.resolve(__dirname, "../src/pages/blog");
 const OUTPUT = path.resolve(__dirname, "../netlify/functions/blog-data.json");
+const LLMS_OUT = path.resolve(__dirname, "../static/llms.txt");
+const SITE = siteMetadata.siteUrl;
 
 function parseFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -98,7 +101,52 @@ function buildBlogData() {
 
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, JSON.stringify(blogs, null, 2));
+
+  writeLlmsTxt(blogs);
+
   console.log(`Built blog data: ${blogs.length} posts → ${OUTPUT}`);
+}
+
+/**
+ * A guided index for language models — see https://llmstxt.org
+ *
+ * Generated from the same parse as the MCP index, because a hand-maintained
+ * list of posts is a list that quietly stops matching the site.
+ */
+function writeLlmsTxt(blogs) {
+  const lines = [
+    "# Multiplier Partners",
+    "",
+    `> ${siteMetadata.description}`,
+    "",
+    "An advisory and GTM consulting firm working on identity, governance and",
+    "machine-trust for autonomous AI agents — credentials, least privilege,",
+    "audit, and lifecycle continuity at enterprise scale.",
+    "",
+    "Every post below is available as plain Markdown by appending `.md` to its",
+    `URL. The site also speaks MCP at ${SITE}/mcp with two tools,`,
+    "`listBlogs` and `getBlog`, if you would rather read it that way.",
+    "",
+    "## Insights",
+    "",
+    ...blogs.map(
+      (p) => `- [${p.title}](${SITE}/blog/${p.slug}.md): ${p.description || ""}`.trimEnd()
+    ),
+    "",
+    "## Pages",
+    "",
+    `- [Home](${SITE}/): What the firm does and who it is for.`,
+    `- [Services](${SITE}/services/): Advisory engagements.`,
+    `- [Solutions](${SITE}/solutions/): Where those engagements are applied.`,
+    `- [AI Security](${SITE}/ai-security/): Identity and trust for autonomous agents.`,
+    `- [Enterprise AI Playbook](${SITE}/enterprise-ai-playbook/): The operating guide.`,
+    `- [Insights](${SITE}/insights/): Longer-form analysis.`,
+    `- [About](${SITE}/about/): Who we are.`,
+    `- [Contact](${SITE}/contact/): How to reach us.`,
+    "",
+  ];
+  fs.writeFileSync(LLMS_OUT, lines.join("\n"));
+  console.log(`Built llms.txt → ${LLMS_OUT}`);
 }
 
 buildBlogData();
