@@ -53,7 +53,7 @@ On the left is the shape most of the market is building: Cross-App Access and En
 
 Look at what is missing. Alice is in the diagram as a red box, and the label is the point: *no message in the protocol reaches her*. No terms. No ask-me. No per-operation grant. No owner revocation. The protocol assumes RO is the enterprise, because in the case it was designed for, it is.
 
-XAA and EMA solve intra-domain distribution. That is the **RO = enterprise special case**. U4A is the general case, and an agent economy is made almost entirely of general cases: my doctor's agent, my advisor's agent, my lawyer's agent, my kid's school's agent, all touching resources whose owner does not work for the company that built the agent.
+XAA and EMA solve intra-domain distribution. That is the **RO = enterprise special case**. [U4A](https://u4a.ai) is the general case, and an agent economy is made almost entirely of general cases: my doctor's agent, my advisor's agent, my lawyer's agent, my kid's school's agent, all touching resources whose owner does not work for the company that built the agent.
 
 On the right, the ticket is minted at Alice's authorization server from message one. Policy lives with the person.
 
@@ -61,7 +61,7 @@ On the right, the ticket is minted at Alice's authorization server from message 
 
 The move is to stop treating the resource server as a token consumer and start treating it as the place where the owner's terms are enforced.
 
-Concretely, in the [U4A proof of concept](https://github.com/nickgamb/uma4agents), an agent calls an MCP tool and gets refused:
+Concretely, in the [U4A proof of concept](https://github.com/nickgamb/uma4agents) — [documented and animated at u4a.ai](https://u4a.ai) — an agent calls an MCP tool and gets refused:
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -93,11 +93,11 @@ That challenge is deliberately a superset of the RAR-metadata step-up draft rath
 }
 ```
 
-`authorization_server` and `ticket` are the two additions, and they are the difference between a client submitting a template to its own authorization server — which cannot work when the resource belongs to someone else — and a client being handed a ticket it can present but cannot widen. The client authors nothing.
+Every parameter above is specified in the [wire contract](https://u4a.ai/docs/reference/wire-contract/). `authorization_server` and `ticket` are the two additions, and they are the difference between a client submitting a template to its own authorization server — which cannot work when the resource belongs to someone else — and a client being handed a ticket it can present but cannot widen. The client authors nothing.
 
 ## The four beats
 
-The negotiation runs in four beats. This is the part worth internalizing, because it is where owner terms stop being a policy document and become a wire protocol.
+The negotiation runs in [four beats](https://u4a.ai/docs/overview/four-beats/). This is the part worth internalizing, because it is where owner terms stop being a policy document and become a wire protocol.
 
 **1 · Challenge.** The agent calls a tool, the policy enforcement point registers the attempt, and the gateway answers with the 401 above. A host with a status line sends `401` + `WWW-Authenticate`; an in-process one sends a JSON-RPC `-32001` carrying the same parameters. The client accepts either.
 
@@ -109,7 +109,7 @@ grant_type = urn:ietf:params:oauth:grant-type:uma-ticket
 ticket     = <ticket>
 ```
 
-Alice's AS answers `403 need_info` with a rotated ticket and **the terms it dictates for that tier**. This is classic UMA claims-gathering, transformed. In 2018 the AS named claim formats it wanted. Here it proffers a terms template, MyTerms and IEEE 7012 shaped: what the agent may do, what it must not do, how long it has.
+Alice's AS answers `403 need_info` with a rotated ticket and **the terms it dictates for that tier**. This is classic UMA claims-gathering, transformed. In 2018 the AS named claim formats it wanted. Here it [proffers a terms template](https://u4a.ai/docs/overview/terms/), MyTerms and IEEE 7012 shaped: what the agent may do, what it must not do, how long it has.
 
 **3 · Commit.** The agent signs those terms as an intent contract, echoing them back, and re-presents. For a known agent under a permissive tier, that is enough. For a new agent, or for anything Alice marked `ask_me`, the AS returns `request_submitted` and holds the ticket while her portal buzzes.
 
@@ -137,7 +137,7 @@ That is the whole surface. The agent's identity model never entered into it.
 
 Building this surfaced capabilities UMA 2.0 has no slot for. Two are new uses of old machinery. Two are genuinely new.
 
-**Per-operation, single-use grants.** "Approve this trade" must not silently become "may trade." Classic UMA scopes authorize *classes* of action. The RPT here carries an operation hash and is consumed on use. This is the single most important reshaping, and it is the one that makes an owner willing to say yes to anything sensitive.
+**[Per-operation, single-use grants](https://u4a.ai/docs/overview/single-use/).** "Approve this trade" must not silently become "may trade." Classic UMA scopes authorize *classes* of action. The RPT here carries an operation hash and is consumed on use. This is the single most important reshaping, and it is the one that makes an owner willing to say yes to anything sensitive.
 
 **The owner's app as the consent surface.** UMA's 2010 wireframes assumed an out-of-band consent channel that did not exist yet. Everyone now carries one.
 
@@ -149,7 +149,7 @@ That failure is a small illustration of the larger thesis. The identity layer ch
 
 ## Run it
 
-The whole stack comes up locally. Docker Desktop and `mkcert` are the only prerequisites.
+The whole stack comes up locally, and there is a [step-by-step guide](https://u4a.ai/docs/guides/run-the-lab/) if you want the annotated version. Docker Desktop and `mkcert` are the only prerequisites.
 
 ```bash
 git clone https://github.com/nickgamb/uma4agents
@@ -174,7 +174,7 @@ Bob's agent can be an unmodified MCP client. A local shim handles agent identity
 
 I am not neutral here. [Eve Maler](https://www.linkedin.com/in/evemaler/) and I built this because we think the industry is spending its attention in the wrong place, and the diagram above is the argument in one frame.
 
-If you are building agent identity, keep going. Ephemeral, enrolled, centralized, decentralized — genuinely, let them. The general case does not require you to win that argument, and U4A does not care which of you does.
+If you are building agent identity, keep going. Ephemeral, enrolled, centralized, decentralized — genuinely, let them. ([How U4A sits beside each of them](https://u4a.ai/docs/overview/compare-agent-identity/), if you want the long form.) The general case does not require you to win that argument, and U4A does not care which of you does.
 
 What the general case requires is that when somebody else's agent shows up at your resource server, **you** get to state the terms, **you** get asked about the operations that matter, and **you** can revoke it afterward. Not your agent's vendor. Not the requesting party's IdP. Not an admin at a company you have no relationship with.
 
@@ -182,4 +182,4 @@ Agent identity is a solved-enough problem with too many solutions. Owner-authori
 
 ---
 
-*U4A is [open source under Apache 2.0](https://github.com/nickgamb/uma4agents). [FINDINGS.md](https://github.com/nickgamb/uma4agents/blob/main/FINDINGS.md) carries the recommendations to spec authors — which UMA 2.0 primitives to keep, transform, or park, each backed by running code.*
+*U4A is [open source under Apache 2.0](https://github.com/nickgamb/uma4agents), and the documentation lives at [u4a.ai](https://u4a.ai). The [findings](https://u4a.ai/docs/reference/findings/) carry the recommendations to spec authors — which UMA 2.0 primitives to keep, transform, or park, each backed by running code.*
