@@ -6,6 +6,7 @@ author: Nick Gamb
 description: "The industry is fighting over how agents prove who they are. That is the wrong fight. The question that decides whether an agent economy works is whether the owner of a resource can set the terms — and U4A is what that looks like in running code."
 featuredpost: true
 featuredimage: /img/blog/u4a-two-shapes.jpeg
+canonical: https://u4a.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a/
 category: Agentic Identity
 tags:
   - Agentic Identity

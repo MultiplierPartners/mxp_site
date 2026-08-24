@@ -37,6 +37,12 @@ const SEO = ({
   title,
   description,
   pathname,
+  // An absolute URL on another domain that holds the master copy of this
+  // page. Set it and the canonical link, og:url and the structured data's
+  // mainEntityOfPage all point there instead of here — a canonical that
+  // disagrees with the other two is a mixed signal, and a crawler resolving
+  // the conflict may simply keep this copy.
+  canonical,
   image,
   article,
   author,
@@ -46,10 +52,12 @@ const SEO = ({
   children,
 }) => {
   const imagePath = raster(image) || siteMetadata.image;
+  const here = `${siteMetadata.siteUrl}${pathname || ""}`;
+  const master = canonical || here;
   const seo = {
     title: title || siteMetadata.title,
     description: description || siteMetadata.description,
-    url: `${siteMetadata.siteUrl}${pathname || ""}`,
+    url: here,
     image: `${siteMetadata.siteUrl}${imagePath}`,
   };
 
@@ -76,7 +84,7 @@ const SEO = ({
             }
           : { "@type": "Organization", name: "Multiplier Partners" },
         publisher: ORG,
-        mainEntityOfPage: { "@type": "WebPage", "@id": seo.url },
+        mainEntityOfPage: { "@type": "WebPage", "@id": master },
         keywords: (tags && tags.length ? tags : siteMetadata.keywords).join(", "),
       }
     : {
@@ -121,7 +129,7 @@ const SEO = ({
         content={author ? author.name : "Multiplier Partners"}
       />
       <meta name="theme-color" content="#050505" />
-      <link rel="canonical" href={seo.url} />
+      <link rel="canonical" href={master} />
       {/* Let search results carry a full image and an untruncated snippet.
           Without this, previews are capped at a thumbnail. */}
       <meta
@@ -132,7 +140,7 @@ const SEO = ({
       {/* Open Graph */}
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
-      <meta property="og:url" content={seo.url} />
+      <meta property="og:url" content={master} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:image:type" content={mimeFor(imagePath)} />
       <meta property="og:image:alt" content={seo.title} />

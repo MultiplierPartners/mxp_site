@@ -190,6 +190,7 @@ export const Head = ({ data, location }) => {
       description={post.frontmatter.description}
       image={post.frontmatter.featuredimage}
       pathname={location.pathname}
+      canonical={post.frontmatter.canonical}
       author={getAuthor(post.frontmatter.author)}
       datePublished={post.frontmatter.isoDate}
       tags={post.frontmatter.tags}
@@ -219,6 +220,9 @@ export const pageQuery = graphql`
         category
         tags
         featuredimage
+        # Set on a post that is republished here from elsewhere; names the
+        # copy search engines should treat as the original.
+        canonical
       }
     }
   }
