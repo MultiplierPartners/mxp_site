@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 110" width="210" height="110">
+  <defs>
+    <!-- Vertical, not diagonal: the mark is near-white along the cap line and
+         charcoal at the baseline, which is what gives it the brushed-steel
+         read. A diagonal ramp looks like a different logo. -->
+    <linearGradient id="steel" x1="0" y1="0" x2="0.16" y2="1">
+      <stop offset="0"    stop-color="#ffffff"/>
+      <stop offset="0.28" stop-color="#e2e5e9"/>
+      <stop offset="0.60" stop-color="#8b9199"/>
+      <stop offset="1"    stop-color="#31353b"/>
+    </linearGradient>
+    <linearGradient id="steelP" x1="0" y1="0" x2="0.16" y2="1">
+      <stop offset="0"    stop-color="#ffffff"/>
+      <stop offset="0.32" stop-color="#e9ecef"/>
+      <stop offset="0.64" stop-color="#99a0a7"/>
+      <stop offset="1"    stop-color="#3b3f45"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Drafting scaffold: sparse, uneven, and drawn over the letterforms, so it
+       reads as construction lines left on a drawing rather than as a grid
+       behind a logo. Evenly spaced lines read as graph paper. -->
+  <g stroke="#9aa0a8" stroke-width="0.7" opacity="0.48" fill="none" stroke-linecap="round">
+    <path d="M17 6 V96 M27 14 V88 M63 2 V70 M71 24 V104 M112 4 V82
+             M137 16 V100 M158 8 V64 M191 20 V92"/>
+    <path d="M10 26 H84 M118 30 H200 M52 78 H150"/>
+    <path d="M6 88 L30 10 M56 104 L82 18 M104 100 L128 22 M150 106 L176 26"/>
+    <path d="M22 20 L34 34 M126 12 L138 26 M164 74 L176 88"/>
+  </g>
+
+  <g>
+    <path fill="url(#steel)" d="M12 84 V26 H25 L39 66 L53 26 H66 V84 H57 V44 L43 78 H35 L21 44 V84 Z"/>
+    <path fill="url(#steel)" d="M64 26 L78 26 L100 54 L122 26 L136 26 L109 55 L136 84 L122 84 L100 58 L78 84 L64 84 L91 55 Z"/>
+    <path fill="url(#steelP)" fill-rule="evenodd"
+          d="M134 84 V26 H173 a21 21 0 0 1 0 42 H147 V84 Z
+             M147 38 H173 a10 10 0 0 1 0 20 H147 Z"/>
+  </g>
+</svg>
