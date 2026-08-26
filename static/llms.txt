@@ -35,7 +35,8 @@ URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tool
   the terms for
   their own data once, on infrastructure they control, and those terms hold
   against somebody else's agent while they are offline. A reference
-  architecture for the Kantara UMA Work Group, built with Eve Maler.
+  architecture demonstrating UMA 2.0 composed for the modern agent
+  economy, built by Nick Gamb with Eve Maler.
 
 ## Related properties
 

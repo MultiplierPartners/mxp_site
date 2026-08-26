@@ -183,7 +183,8 @@ const IndexPage = () => (
             else&rsquo;s agent while they are offline.
           </p>
           <p className="lede">
-            A reference architecture for the Kantara UMA Work Group, built by{" "}
+            A reference architecture demonstrating UMA 2.0 composed for the
+            modern agent economy, built by{" "}
             <a
               href={people.nick.linkedin}
               target="_blank"
