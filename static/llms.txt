@@ -27,3 +27,20 @@ URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tool
 - [Insights](https://multiplierpartners.ai/insights/): Longer-form analysis.
 - [About](https://multiplierpartners.ai/about/): Who we are.
 - [Contact](https://multiplierpartners.ai/contact/): How to reach us.
+
+## Current work
+
+- [UMA for Agents](https://u4a.ai): A working reference implementation of
+  asynchronous authoritative authorization for AI agents — an owner sets
+  the terms for
+  their own data once, on infrastructure they control, and those terms hold
+  against somebody else's agent while they are offline. A reference
+  architecture for the Kantara UMA Work Group, built with Eve Maler.
+
+## Related properties
+
+Separate sites published by the same people. None is a mirror of this one.
+
+- [MindGarden](https://mindgardenai.com): Nick Gamb's identity security
+  research and consulting practice.
+- [Venn Factory](https://www.vennfactory.com): Eve Maler's practice.

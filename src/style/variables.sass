@@ -16,15 +16,58 @@ $mxp-violet:     #a100ff
 $mxp-green:      #19e68c
 $mxp-cyan:       #38d6ff
 
-// Semantic aliases
-$bg:             $mxp-black
-$bg-card:        $mxp-charcoal
-$bg-elevated:    $mxp-deep-gray
-$fg:             $mxp-off-white
-$fg-muted:       $mxp-muted
-$primary:        $mxp-violet
-$border:         rgba(255, 255, 255, 0.08)
-$border-strong:  rgba(255, 255, 255, 0.16)
+// Light palette — the same brand on paper rather than a second brand. The
+// accents are darkened because violet, green and cyan that read well on
+// near-black are illegible on white at body-text contrast.
+$mxp-paper:        #ffffff
+$mxp-paper-sunk:   #f4f4f1
+$mxp-paper-raised: #eceae5
+$mxp-ink:          #111111
+$mxp-ink-muted:    #55565a
+$mxp-violet-ink:   #7b12c9
+$mxp-green-ink:    #0a7f4e
+$mxp-cyan-ink:     #0b6f93
+
+// Semantic aliases.
+//
+// These resolve to custom properties rather than to colours, which is what
+// makes the theme switchable at all: sass is compiled once, so a stylesheet
+// that baked #050505 into a thousand rules can only ever be dark. Every rule
+// in _mxp.sass already goes through these names, so pointing them at
+// variables themes the whole sheet without touching any of it.
+//
+// The consequence to know about: these can no longer be passed to sass colour
+// functions — `lighten($bg, 5%)` cannot work on a value the compiler will
+// never see. Nothing here does that today; use a `--*-strong` token instead of
+// reaching for one.
+$bg:             var(--mxp-bg)
+$bg-card:        var(--mxp-bg-card)
+$bg-elevated:    var(--mxp-bg-elevated)
+$fg:             var(--mxp-fg)
+$fg-muted:       var(--mxp-fg-muted)
+$primary:        var(--mxp-primary)
+$accent-green:   var(--mxp-accent-green)
+$accent-cyan:    var(--mxp-accent-cyan)
+$border:         var(--mxp-border)
+$border-strong:  var(--mxp-border-strong)
+$scrim:          var(--mxp-scrim)
+$shadow-deep:    var(--mxp-shadow-deep)
+$tint:           var(--mxp-tint)
+$wash-faint:     var(--mxp-wash-faint)
+$wash:           var(--mxp-wash)
+$wash-strong:    var(--mxp-wash-strong)
+$rule:           var(--mxp-rule)
+$grid-line:      var(--mxp-grid)
+$invert-bg:      var(--mxp-invert-bg)
+$invert-fg:      var(--mxp-invert-fg)
+$fg-soft:        var(--mxp-fg-soft)
+$fg-faint:       var(--mxp-fg-faint)
+$bg-veil:        var(--mxp-bg-veil)
+$bg-veil-solid:  var(--mxp-bg-veil-solid)
+$primary-hover:  var(--mxp-primary-hover)
+// The near-black ground itself, for the few places that want the brand's
+// black regardless of theme — a logo tile, an inverted band.
+$ground:         $mxp-black
 
 // Radii — from --radius: .625rem
 $radius:         0.625rem

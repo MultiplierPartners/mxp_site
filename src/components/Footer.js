@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { contact, footerColumns, footerBlurb, tagline } from "../data/site";
+import { contact, footerColumns, footerBlurb, tagline, u4a } from "../data/site";
 
 const isInternal = (to) => to && to.startsWith("/");
 
@@ -16,6 +16,20 @@ const Footer = () => (
           <a className="mxp-footer__email" href={`mailto:${contact.email}`}>
             {contact.email}
           </a>
+          {/* The project this practice builds in the open. In the footer as
+              well as on the home page because it is reached from every page,
+              not only the one somebody landed on. */}
+          <p className="mxp-footer__label">Current work</p>
+          <a
+            className="mxp-footer__project"
+            href={u4a.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="mxp-footer__project-name">{u4a.name}</span>
+            <span className="mxp-footer__project-url">{u4a.label}</span>
+          </a>
+
           <a
             className="btn btn--ghost mxp-footer__linkedin"
             href={contact.linkedin}

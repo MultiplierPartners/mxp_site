@@ -40,6 +40,19 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+# Related properties, published by the same people. Listed so a crawler
+# reading this file has the set in one place rather than inferring it from
+# outbound links; each is a separate site with its own robots.txt and sitemap,
+# and none of them is a mirror of this one.
+#
+#   https://u4a.ai                — UMA for Agents, the open reference work
+#   https://mindgardenai.com      — MindGarden, identity security research
+#   https://www.vennfactory.com   — Venn Factory
+#
+# These are comments: robots.txt has no directive for a related site, so
+# nothing here is fetched on their account. The links that actually carry a
+# crawler across are in the page footer and in /llms.txt.
+
 # The whole site in one fetch.
 Sitemap: https://multiplierpartners.ai/sitemap.xml
 

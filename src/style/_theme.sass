@@ -1,0 +1,93 @@
+// ===================================================================
+// Theme — the values behind the semantic aliases in variables.sass
+// ===================================================================
+//
+// Three states rather than two. With no `data-theme` attribute the site
+// follows the operating system, which is the default anyone arrives with;
+// choosing writes the attribute and then wins over the system in *both*
+// directions. That is why the light block is guarded by
+// `:not([data-theme="dark"])` — without it, a reader on a light system who
+// picked dark would get their choice overridden by their own machine.
+//
+// gatsby-ssr.js applies the stored choice before first paint, so a reader who
+// has chosen dark never sees a white flash on the way in.
+
+=dark-tokens
+  --mxp-bg:            #{$mxp-black}
+  --mxp-bg-card:       #{$mxp-charcoal}
+  --mxp-bg-elevated:   #{$mxp-deep-gray}
+  --mxp-fg:            #{$mxp-off-white}
+  --mxp-fg-muted:      #{$mxp-muted}
+  --mxp-primary:       #{$mxp-violet}
+  --mxp-accent-green:  #{$mxp-green}
+  --mxp-accent-cyan:   #{$mxp-cyan}
+  --mxp-border:        rgba(255, 255, 255, 0.08)
+  --mxp-border-strong: rgba(255, 255, 255, 0.16)
+  --mxp-scrim:         rgba(0, 0, 0, 0.66)
+  --mxp-shadow-deep:   rgba(0, 0, 0, 0.6)
+  --mxp-tint:          rgba(161, 0, 255, 0.14)
+  // Washes: the barely-there surface tints, hovers and hairlines this design
+  // is full of. They were all white at low alpha, which is only a wash on a
+  // dark ground — on paper the same rule paints white on white.
+  --mxp-wash-faint:    rgba(255, 255, 255, 0.02)
+  --mxp-wash:          rgba(255, 255, 255, 0.05)
+  --mxp-wash-strong:   rgba(255, 255, 255, 0.09)
+  --mxp-rule:          rgba(255, 255, 255, 0.15)
+  --mxp-grid:          rgba(255, 255, 255, 0.028)
+  // The inverted button — white on a dark page, ink on a light one. Without
+  // this it is a white button on white.
+  --mxp-invert-bg:     #{$mxp-white}
+  --mxp-invert-fg:     #000000
+  --mxp-panel-grad:    linear-gradient(135deg, #{$mxp-deep-gray}, #{$mxp-black})
+  // Body copy sits a step under the heading colour. This was written as the
+  // off-white at 80%, which is a legible grey on near-black and invisible ink
+  // on paper — it was the single biggest thing wrong with the light theme.
+  --mxp-fg-soft:       rgba(245, 245, 242, 0.8)
+  --mxp-fg-faint:      rgba(245, 245, 242, 0.4)
+  // The sticky bar, which is the page ground at reading opacity.
+  --mxp-bg-veil:       rgba(5, 5, 5, 0.85)
+  --mxp-bg-veil-solid: rgba(5, 5, 5, 0.8)
+  --mxp-primary-hover: #b32bff
+  color-scheme: dark
+
+=light-tokens
+  --mxp-bg:            #{$mxp-paper}
+  --mxp-bg-card:       #{$mxp-paper-sunk}
+  --mxp-bg-elevated:   #{$mxp-paper-raised}
+  --mxp-fg:            #{$mxp-ink}
+  --mxp-fg-muted:      #{$mxp-ink-muted}
+  --mxp-primary:       #{$mxp-violet-ink}
+  --mxp-accent-green:  #{$mxp-green-ink}
+  --mxp-accent-cyan:   #{$mxp-cyan-ink}
+  --mxp-border:        rgba(17, 17, 17, 0.12)
+  --mxp-border-strong: rgba(17, 17, 17, 0.22)
+  --mxp-scrim:         rgba(17, 17, 17, 0.42)
+  --mxp-shadow-deep:   rgba(17, 17, 17, 0.18)
+  --mxp-tint:          rgba(123, 18, 201, 0.12)
+  --mxp-wash-faint:    rgba(17, 17, 17, 0.025)
+  --mxp-wash:          rgba(17, 17, 17, 0.05)
+  --mxp-wash-strong:   rgba(17, 17, 17, 0.09)
+  --mxp-rule:          rgba(17, 17, 17, 0.18)
+  --mxp-grid:          rgba(17, 17, 17, 0.04)
+  --mxp-invert-bg:     #{$mxp-ink}
+  --mxp-invert-fg:     #{$mxp-paper}
+  --mxp-panel-grad:    linear-gradient(135deg, #{$mxp-paper-raised}, #{$mxp-paper-sunk})
+  --mxp-fg-soft:       rgba(17, 17, 17, 0.78)
+  --mxp-fg-faint:      rgba(17, 17, 17, 0.45)
+  --mxp-bg-veil:       rgba(255, 255, 255, 0.88)
+  --mxp-bg-veil-solid: rgba(255, 255, 255, 0.92)
+  --mxp-primary-hover: #5e0aa0
+  color-scheme: light
+
+\:root
+  +dark-tokens
+
+@media (prefers-color-scheme: light)
+  \:root:not([data-theme="dark"])
+    +light-tokens
+
+\:root[data-theme="light"]
+  +light-tokens
+
+\:root[data-theme="dark"]
+  +dark-tokens

@@ -1,0 +1,186 @@
+[
+  {
+    "title": "Multiplier Partners",
+    "url": "/",
+    "section": "Multiplier Partners",
+    "group": "Site",
+    "description": "Multiplier Partners is an advisory and GTM consulting firm helping enterprises operationalize identity, governance, and machine-trust for autonomous AI agents at scale — credentials, least privilege, audit, and lifecycle continuity.",
+    "headings": []
+  },
+  {
+    "title": "About",
+    "url": "/about/",
+    "section": "Multiplier Partners",
+    "group": "Site",
+    "description": "A boutique advisory firm built for the autonomous AI era — senior operators giving autonomous AI an identity, a scope, an audit trail, and a lifecycle.",
+    "headings": []
+  },
+  {
+    "title": "AI Security",
+    "url": "/ai-security/",
+    "section": "Multiplier Partners",
+    "group": "Site",
+    "description": "Identity-first AI security. Agent identity, machine trust, prompt injection defense, governance, shadow AI, and lifecycle continuity for autonomous agents.",
+    "headings": []
+  },
+  {
+    "title": "Blog",
+    "url": "/blog/",
+    "section": "Insights",
+    "group": "Writing",
+    "description": "Field notes and executive briefings on identity-first AI, agent governance, machine trust, and the economics of the enterprise AI buildout.",
+    "headings": []
+  },
+  {
+    "title": "The ROI Reckoning",
+    "url": "/blog/2026-06-15-the-roi-reckoning/",
+    "section": "Insights",
+    "group": "Writing",
+    "description": "Why Agentic AI Ambitions Are Hitting a Wall — and What Separates the 12% Who Break Through",
+    "headings": []
+  },
+  {
+    "title": "The AI Infrastructure Valuation Paradox",
+    "url": "/blog/2026-07-10-ai-infrastructure-valuation-paradox/",
+    "section": "Insights",
+    "group": "Writing",
+    "description": "What has bolstered AI infrastructure valuations in the public and private markets — and what makes those valuations vulnerable to repricing.",
+    "headings": []
+  },
+  {
+    "title": "The AI Edge: Funding Challenges for the Leading Builders",
+    "url": "/blog/2026-07-21-the-ai-edge-funding-challenges/",
+    "section": "Insights",
+    "group": "Writing",
+    "description": "A placid surface with dynamic undercurrents. Big Tech's AI buildout has crossed from a spending story into a financing story — and for enterprises, that makes it a due-diligence issue.",
+    "headings": []
+  },
+  {
+    "title": "Let Them: A Developer's Guide to UMA for Agents",
+    "url": "/blog/2026-08-06-let-them-a-developers-guide-to-u4a/",
+    "section": "Insights",
+    "group": "Writing",
+    "description": "The industry is fighting over how agents prove who they are. That is the wrong fight. The question that decides whether an agent economy works is whether the owner of a resource can set the terms — and U4A is what that looks like in running code.",
+    "headings": []
+  },
+  {
+    "title": "Contact",
+    "url": "/contact/",
+    "section": "Multiplier Partners",
+    "group": "Site",
+    "description": "Talk to Multiplier Partners. Most engagements start with an AI Identity & Risk Assessment.",
+    "headings": []
+  },
+  {
+    "title": "The Startup Playbook",
+    "url": "/enterprise-ai-playbook/",
+    "section": "Multiplier Partners",
+    "group": "Site",
+    "description": "Twenty short consumable chapters on the keys to building startup success from first funding to delivering enterprise solutions at scale.",
+    "headings": []
+  },
+  {
+    "title": "Insights",
+    "url": "/insights/",
+    "section": "Multiplier Partners",
+    "group": "Site",
+    "description": "Editorial perspective on identity-first AI, agent governance, machine trust, lifecycle continuity, and the operating practices required to deploy autonomous AI safely.",
+    "headings": []
+  },
+  {
+    "title": "Services",
+    "url": "/services/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "Identity, governance, and continuity for autonomous AI. Advisory services spanning agent identity, governance, architecture, cybersecurity, and data.",
+    "headings": []
+  },
+  {
+    "title": "Agentic AI Identity & Governance",
+    "url": "/services/agentic-ai-automation/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "Treat autonomous AI agents as first-class citizens with their own identities, credentials, scoped permissions, and audit trails — governed from issuance to retirement.",
+    "headings": []
+  },
+  {
+    "title": "AI Architecture",
+    "url": "/services/ai-architecture/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "Reference architecture and an AI control plane that the rest of the enterprise can rely on — agent identity, model gateways, retrieval, audit, and governed delegation as a single system.",
+    "headings": []
+  },
+  {
+    "title": "AI Security & Governance",
+    "url": "/services/ai-security-governance/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "Practical identity-first governance for organizations where autonomous AI agents are now acting inside the enterprise — built for boards, regulators, and the security teams who have to defend it.",
+    "headings": []
+  },
+  {
+    "title": "Cybersecurity for the AI Enterprise",
+    "url": "/services/cybersecurity-ai-enterprise/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "A modern, identity-first security operating model for organizations where autonomous agents are now part of the workforce — credentials, machine trust, audit, and lifecycle continuity included.",
+    "headings": []
+  },
+  {
+    "title": "Data & AI Infrastructure",
+    "url": "/services/data-ai-infrastructure/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "The data foundation autonomous agents can actually use — curated, permissioned, observable, and aligned to identity and least privilege from the start.",
+    "headings": []
+  },
+  {
+    "title": "Enterprise AI Strategy",
+    "url": "/services/enterprise-ai-strategy/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "A clear-eyed plan for where autonomous agents create real economic value across your enterprise — and how to sequence the work without creating identity, governance, or compliance debt.",
+    "headings": []
+  },
+  {
+    "title": "Identity & Access AI Control",
+    "url": "/services/identity-access-ai-control/",
+    "section": "Services",
+    "group": "Advisory",
+    "description": "Treat autonomous agents as first-class citizens. Each gets its own identity, credentials, crypto-keys, scoped permissions, and audit — across applications, data, and APIs the enterprise actually runs on.",
+    "headings": []
+  },
+  {
+    "title": "Solutions",
+    "url": "/solutions/",
+    "section": "Solutions",
+    "group": "Where it applies",
+    "description": "Outcomes for executive sponsors deploying autonomous AI — governing agents, scaling identity-first AI, reducing risk, and reporting credibly to the board.",
+    "headings": []
+  },
+  {
+    "title": "Govern AI Agents",
+    "url": "/solutions/govern-ai-agents/",
+    "section": "Solutions",
+    "group": "Where it applies",
+    "description": "A practical operating model for letting autonomous agents act inside the enterprise — with identity, credentials, scoped permissions, audit, and lifecycle continuity that boards and regulators accept.",
+    "headings": []
+  },
+  {
+    "title": "Scale AI Beyond Pilots",
+    "url": "/solutions/scale-ai-beyond-pilots/",
+    "section": "Solutions",
+    "group": "Where it applies",
+    "description": "Move from disconnected experiments to enterprise-grade autonomous AI — with the identity, architecture, governance, and continuity to make it durable across business units.",
+    "headings": []
+  },
+  {
+    "title": "Secure AI Adoption",
+    "url": "/solutions/secure-ai-adoption/",
+    "section": "Solutions",
+    "group": "Where it applies",
+    "description": "Adopt autonomous AI broadly across the enterprise — without creating identity, data, governance, or compliance exposure boards cannot defend.",
+    "headings": []
+  }
+]

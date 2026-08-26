@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 60" width="184" height="60" role="img" aria-label="MXP">
+  <!-- The wordmark cut for the navigation bar, where it sits about twenty
+       pixels tall on a near-black sticky header.
+
+       Two things go, and both for the size rather than the design. The
+       drafting scaffold is sub-pixel at this height and reads as dirt on the
+       glass, so it is dropped — it belongs at sizes where a line is a line.
+       And the gradient stops at slate rather than charcoal: the full ramp
+       ends the same colour as the bar behind it, which takes the bottom of
+       every letter with it. -->
+  <defs>
+    <linearGradient id="navInk" x1="0" y1="0" x2="0.16" y2="1">
+      <stop offset="0"    stop-color="#2b2f34"/>
+      <stop offset="0.32" stop-color="#4a4f56"/>
+      <stop offset="0.68" stop-color="#6b7178"/>
+      <stop offset="1"    stop-color="#8d949c"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-11 -25)" fill="url(#navInk)">
+    <path d="M12 84 V26 H25 L39 66 L53 26 H66 V84 H57 V44 L43 78 H35 L21 44 V84 Z"/>
+    <path d="M64 26 L78 26 L100 54 L122 26 L136 26 L109 55 L136 84 L122 84 L100 58 L78 84 L64 84 L91 55 Z"/>
+    <path fill-rule="evenodd"
+          d="M134 84 V26 H173 a21 21 0 0 1 0 42 H147 V84 Z
+             M147 38 H173 a10 10 0 0 1 0 20 H147 Z"/>
+  </g>
+</svg>

@@ -5,6 +5,25 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/matt-teeple-059ab8174",
 };
 
+// UMA for Agents — the open reference implementation of the control layer
+// this practice advises on. Kept here rather than written into a page,
+// because it is now linked from the home page, the footer and llms.txt.
+export const people = {
+  nick: { name: "Nick Gamb", linkedin: "https://www.linkedin.com/in/nickgamb/" },
+  eve: { name: "Eve Maler", linkedin: "https://www.linkedin.com/in/evemaler/" },
+};
+
+export const u4a = {
+  url: "https://u4a.ai",
+  label: "u4a.ai",
+  name: "UMA for Agents",
+  repo: "https://github.com/nickgamb/uma4agents",
+  // The same one-click launch the "try it now" button on u4a.ai uses.
+  codespace:
+    "https://codespaces.new/nickgamb/uma4agents?devcontainer_path=.devcontainer%2Fdevcontainer.json",
+  post: "/blog/2026-08-06-let-them-a-developers-guide-to-u4a/",
+};
+
 export const ctaLabel = "AI Security Assessment Now";
 export const ctaTo = "/contact/";
 

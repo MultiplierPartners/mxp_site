@@ -12,6 +12,8 @@ const siteMetadata = require("../site-meta");
 const BLOG_DIR = path.resolve(__dirname, "../src/pages/blog");
 const OUTPUT = path.resolve(__dirname, "../netlify/functions/blog-data.json");
 const LLMS_OUT = path.resolve(__dirname, "../static/llms.txt");
+const SEARCH_OUT = path.resolve(__dirname, "../static/search-index.json");
+const PAGES_DIR = path.resolve(__dirname, "../src/pages");
 const SITE = siteMetadata.siteUrl;
 
 function parseFrontmatter(content) {
@@ -103,6 +105,7 @@ function buildBlogData() {
   fs.writeFileSync(OUTPUT, JSON.stringify(blogs, null, 2));
 
   writeLlmsTxt(blogs);
+  writeSearchIndex(blogs);
 
   console.log(`Built blog data: ${blogs.length} posts → ${OUTPUT}`);
 }
@@ -144,9 +147,141 @@ function writeLlmsTxt(blogs) {
     `- [About](${SITE}/about/): Who we are.`,
     `- [Contact](${SITE}/contact/): How to reach us.`,
     "",
+    "## Current work",
+    "",
+    "- [UMA for Agents](https://u4a.ai): A working reference implementation of",
+    "  asynchronous authoritative authorization for AI agents — an owner sets",
+    "  the terms for",
+    "  their own data once, on infrastructure they control, and those terms hold",
+    "  against somebody else's agent while they are offline. A reference",
+    "  architecture for the Kantara UMA Work Group, built with Eve Maler.",
+    "",
+    "## Related properties",
+    "",
+    "Separate sites published by the same people. None is a mirror of this one.",
+    "",
+    "- [MindGarden](https://mindgardenai.com): Nick Gamb's identity security",
+    "  research and consulting practice.",
+    "- [Venn Factory](https://www.vennfactory.com): Eve Maler's practice.",
+    "",
   ];
   fs.writeFileSync(LLMS_OUT, lines.join("\n"));
   console.log(`Built llms.txt → ${LLMS_OUT}`);
 }
 
 buildBlogData();
+
+/**
+ * What ⌘K filters, built at the same time as everything else.
+ *
+ * Covers the whole site rather than the posts, which means reading the two
+ * kinds of page this site is made of. Markdown carries frontmatter and is
+ * already parsed above. Every other page is a React component that declares
+ * its own title, description and path to <SEO> — so that is where they are
+ * read from, rather than kept in a second list here that would quietly stop
+ * matching the pages.
+ */
+function collectPages(dir, out = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      collectPages(full, out);
+    } else if (entry.name.endsWith(".js")) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
+function seoProps(source) {
+  // Three shapes, because this site is built of three kinds of page and a
+  // search that only understood one of them would silently cover half the
+  // site.
+  //
+  //   1. a top-level page — <SEO title pathname description />
+  //   2. a detail page    — `const page = { path, title, lede }`, which
+  //                          DetailPage turns into the same tags
+  //   3. the home page    — <SEO pathname="/" /> and nothing else, taking
+  //                          its title and description from site metadata
+
+  const block = source.match(/<SEO\b([\s\S]{0,900}?)\/>/);
+  if (block) {
+    const grab = (name) => {
+      const m = block[1].match(new RegExp(`${name}=\\{?"([^"]*)"`));
+      return m ? m[1] : null;
+    };
+    const pathname = grab("pathname");
+    if (pathname) {
+      const title = grab("title");
+      if (title) {
+        return { pathname, title, description: grab("description") || "" };
+      }
+      if (pathname === "/") {
+        return {
+          pathname,
+          title: siteMetadata.title,
+          description: siteMetadata.description || "",
+        };
+      }
+    }
+  }
+
+  // The detail pages. Matched at the object's own indent so the `title:` of a
+  // nested block — every one of them has several — cannot be picked up
+  // instead of the page's.
+  const field = (name) => {
+    const m = source.match(new RegExp(`^  ${name}: "((?:[^"\\\\]|\\\\.)*)"`, "m"));
+    return m ? m[1].replace(/\\"/g, '"') : null;
+  };
+  const detailPath = field("path");
+  const detailTitle = field("title");
+  if (detailPath && detailTitle) {
+    return {
+      pathname: detailPath,
+      title: detailTitle,
+      description: field("lede") || "",
+    };
+  }
+  return null;
+}
+
+function sectionFor(url) {
+  if (url.startsWith("/services")) return { section: "Services", group: "Advisory" };
+  if (url.startsWith("/solutions")) return { section: "Solutions", group: "Where it applies" };
+  if (url.startsWith("/blog")) return { section: "Insights", group: "Writing" };
+  return { section: "Multiplier Partners", group: "Site" };
+}
+
+function writeSearchIndex(blogs) {
+  const rows = [];
+
+  for (const file of collectPages(PAGES_DIR)) {
+    if (path.basename(file) === "404.js") continue;
+    const props = seoProps(fs.readFileSync(file, "utf8"));
+    if (!props) continue;
+    rows.push({
+      // The suffix on a title like "About | Multiplier Partners" is the same
+      // on every page, so it matches everything and ranks nothing.
+      title: props.title.split("|")[0].trim(),
+      url: props.pathname,
+      ...sectionFor(props.pathname),
+      description: props.description,
+      headings: [],
+    });
+  }
+
+  for (const post of blogs) {
+    rows.push({
+      title: post.title,
+      url: `/blog/${post.slug}/`,
+      section: "Insights",
+      group: "Writing",
+      description: post.description || "",
+      headings: [],
+    });
+  }
+
+  rows.sort((a, b) => a.url.localeCompare(b.url));
+  fs.writeFileSync(SEARCH_OUT, JSON.stringify(rows, null, 2));
+  console.log(`Built search index: ${rows.length} entries → ${SEARCH_OUT}`);
+}
