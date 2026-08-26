@@ -2042,3 +2042,18 @@ img.mxp-nav__mark--light
   transition: color 0.15s ease
   &:hover
     color: $primary
+
+// The partner practices, as plain links. Block-level for the same reason the
+// current-work link above is: an inline row here lets the LinkedIn button
+// that follows flow alongside it.
+.mxp-footer__partners
+  display: flex
+  flex-wrap: wrap
+  gap: 0.4rem 1.5rem
+  margin-bottom: 1.5rem
+  a
+    color: $fg-muted
+    font-size: 0.9rem
+    text-decoration: none
+    &:hover
+      color: $fg

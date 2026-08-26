@@ -24,6 +24,14 @@ export const u4a = {
   post: "/blog/2026-08-06-let-them-a-developers-guide-to-u4a/",
 };
 
+// The other practices this work is done with. u4a.ai is not here — it has
+// its own line above as the current work, and listing it twice would be the
+// same link twice.
+export const partners = [
+  { name: "Venn Factory", url: "https://www.vennfactory.com" },
+  { name: "MindGarden", url: "https://mindgardenai.com" },
+];
+
 export const ctaLabel = "AI Security Assessment Now";
 export const ctaTo = "/contact/";
 

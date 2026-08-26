@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
-import { contact, footerColumns, footerBlurb, tagline, u4a } from "../data/site";
+import {
+  contact,
+  footerColumns,
+  footerBlurb,
+  tagline,
+  u4a,
+  partners,
+} from "../data/site";
 
 const isInternal = (to) => to && to.startsWith("/");
 
@@ -29,6 +36,21 @@ const Footer = () => (
             <span className="mxp-footer__project-name">{u4a.name}</span>
             <span className="mxp-footer__project-url">{u4a.label}</span>
           </a>
+
+          {/* Names only — what each of them does is their own site's to say. */}
+          <p className="mxp-footer__label">Partners</p>
+          <div className="mxp-footer__partners">
+            {partners.map((p) => (
+              <a
+                key={p.url}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {p.name}
+              </a>
+            ))}
+          </div>
 
           <a
             className="btn btn--ghost mxp-footer__linkedin"
