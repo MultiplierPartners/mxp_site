@@ -1950,8 +1950,13 @@ img.mxp-nav__mark
 // The current-work link in the footer. Two lines rather than one so the
 // project has a name and an address, the way the nav lockup does.
 .mxp-footer__project
-  display: inline-flex
+  // Block-level, not inline. As an inline-flex it stayed on the same line, so
+  // the LinkedIn button that follows it flowed alongside and the two
+  // overlapped on a narrow screen.
+  display: flex
   flex-direction: column
+  align-items: flex-start
+  width: fit-content
   gap: 0.15rem
   margin-bottom: 1.5rem
   text-decoration: none
