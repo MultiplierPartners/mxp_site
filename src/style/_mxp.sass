@@ -1844,6 +1844,29 @@ a.card:hover
   @media (max-width: $bp-nav)
     margin-left: auto
     margin-right: 0.75rem
+  @media (max-width: $bp-sm)
+    margin-right: 0.25rem
+    gap: 0.25rem
+
+// The nav row has to fit, and on a phone it did not: the brand lockup is
+// ~250px of a 375px screen, and adding search and a theme toggle pushed the
+// row to 478 and gave the whole site a horizontal scrollbar.
+//
+// The tagline is the part that gives. It is a second statement of what the
+// hero says immediately below it, while search is the only way to reach most
+// of the site once the links are behind the burger.
+@media (max-width: $bp-sm)
+  .mxp-nav__tagline
+    display: none
+  .mxp-nav__inner
+    gap: 0.75rem
+  // The label swap this component was written with — missed when the styles
+  // were ported, because it is a top-level media query rather than a rule
+  // inside one of the .docs-search blocks.
+  .docs-search__label
+    display: none
+  .docs-search__label--short
+    display: inline
 
 // The wordmark replaces a text node, so it needs an explicit height — an SVG
 // with no intrinsic sizing in a flex row collapses to nothing.
@@ -1948,23 +1971,28 @@ img.mxp-nav__mark
 
 // Which cut of the wordmark is showing. Follows the same three-state rule as
 // the tokens: system by default, an explicit choice winning over it.
-.mxp-nav__mark--light
+//
+// Every selector here is qualified with `img` deliberately. The sizing rule
+// above is `img.mxp-nav__mark`, and an element selector outranks a bare class
+// — so `.mxp-nav__mark--light { display: none }` loses to it and both cuts
+// render side by side. Which is exactly what shipped.
+img.mxp-nav__mark--light
   display: none
 @media (prefers-color-scheme: light)
   :root:not([data-theme="dark"])
-    .mxp-nav__mark--dark
+    img.mxp-nav__mark--dark
       display: none
-    .mxp-nav__mark--light
+    img.mxp-nav__mark--light
       display: block
 :root[data-theme="light"]
-  .mxp-nav__mark--dark
+  img.mxp-nav__mark--dark
     display: none
-  .mxp-nav__mark--light
+  img.mxp-nav__mark--light
     display: block
 :root[data-theme="dark"]
-  .mxp-nav__mark--dark
+  img.mxp-nav__mark--dark
     display: block
-  .mxp-nav__mark--light
+  img.mxp-nav__mark--light
     display: none
 
 // The project's mark and facts, as one column beside the prose.
