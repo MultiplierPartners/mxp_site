@@ -29,7 +29,7 @@ const ORG = {
   description: siteMetadata.description,
   logo: {
     "@type": "ImageObject",
-    url: `${siteMetadata.siteUrl}/img/mxp-icon.svg`,
+    url: `${siteMetadata.siteUrl}/img/mxp-icon.png`,
   },
 };
 
@@ -171,7 +171,10 @@ const SEO = ({
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:image:alt" content={seo.title} />
 
-      <link rel="icon" type="image/svg+xml" href="/img/mxp-icon.svg" />
+      {/* A raster rather than an SVG: the mark is artwork with a
+          gradient and a drafting scaffold, not shapes that can be
+          drawn as paths without redrawing them. */}
+      <link rel="icon" type="image/png" sizes="192x192" href="/img/mxp-icon.png" />
       <script type="application/ld+json">
         {JSON.stringify(ld, (_k, v) => (v === undefined ? undefined : v))}
       </script>

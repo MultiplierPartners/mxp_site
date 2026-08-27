@@ -23,21 +23,21 @@ const Navbar = () => {
               names itself for a screen reader, so both images are decorative.
 
               Two files rather than one: it is a gradient, so it cannot follow
-              `currentColor`, and the silver cut that reads on near-black is
-              nearly invisible on paper. CSS shows whichever matches. */}
+              `currentColor`, and the cut that reads on near-black loses the
+              top of every letter on paper. CSS shows whichever matches. */}
           <img
             className="mxp-nav__mark mxp-nav__mark--dark"
-            src="/img/mxp-nav.svg"
+            src="/img/mxp-nav.png"
             alt=""
-            width="61"
-            height="20"
+            width="53"
+            height="28"
           />
           <img
             className="mxp-nav__mark mxp-nav__mark--light"
-            src="/img/mxp-nav-light.svg"
+            src="/img/mxp-nav-light.png"
             alt=""
-            width="61"
-            height="20"
+            width="53"
+            height="28"
           />
           <span className="mxp-nav__tagline">
             Delivering Enterprise Identity Continuity and Agentic Security

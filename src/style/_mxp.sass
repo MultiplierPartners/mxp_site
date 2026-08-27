@@ -1872,7 +1872,11 @@ a.card:hover
 // with no intrinsic sizing in a flex row collapses to nothing.
 img.mxp-nav__mark
   display: block
-  height: 20px
+  // Taller than the old cut looks, and deliberately. This artwork carries the
+  // drafting scaffold above and below the letters, which is 42% of its height
+  // — so at 20px the letters themselves would render at about 12px and read
+  // as a smaller logo than the one it replaced.
+  height: 28px
   width: auto
   flex: 0 0 auto
 
