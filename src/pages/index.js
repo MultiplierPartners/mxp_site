@@ -176,11 +176,10 @@ const IndexPage = () => (
             The control layer we advise on, built in the open.
           </h2>
           <p className="lede">
-            <strong>UMA for Agents</strong> is a working reference
-            implementation of asynchronous authoritative authorization for AI
-            agents — a person sets the terms for their own data once, on
-            infrastructure they control, and those terms hold against somebody
-            else&rsquo;s agent while they are offline.
+            <strong>UMA for Agents</strong> A working reference architecture that implements a
+            modernized take on UMA for decentralized agent authorization — a person sets the 
+            terms for their own data once, on infrastructure they control, and those terms 
+            hold against somebody else&rsquo;s agent while they are offline.
           </p>
           <p className="lede">
             A reference architecture demonstrating UMA 2.0 composed for the

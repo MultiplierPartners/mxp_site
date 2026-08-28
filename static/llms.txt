@@ -30,12 +30,11 @@ URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tool
 
 ## Current work
 
-- [UMA for Agents](https://u4a.ai): A working reference implementation of
-  asynchronous authoritative authorization for AI agents — an owner sets
-  the terms for
-  their own data once, on infrastructure they control, and those terms hold
-  against somebody else's agent while they are offline. A reference
-  architecture demonstrating UMA 2.0 composed for the modern agent
+- [UMA for Agents](https://u4a.ai): A working reference architecture that implements a
+  modernized take on UMA for decentralized agent authorization — an owner sets
+  the terms for their own data once, on infrastructure they control, 
+  and those terms hold against somebody else's agent while they are offline. 
+  A reference architecture demonstrating UMA 2.0 composed for the modern agent
   economy, built by Nick Gamb with Eve Maler.
 
 ## Related properties
