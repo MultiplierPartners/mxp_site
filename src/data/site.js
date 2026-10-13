@@ -42,6 +42,8 @@ export const navLinks = [
   { label: "Security", to: "/ai-security/" },
   { label: "Insights", to: "/insights/" },
   { label: "Playbook", to: "/enterprise-ai-playbook/" },
+  // Static page in /static/roundtable, not a Gatsby page, so it renders as a plain link
+  { label: "Roundtable", to: "/roundtable/", isStatic: true },
   { label: "Blog", to: "/blog/" },
   { label: "About", to: "/about/" },
   { label: "Contact", to: "/contact/" },
