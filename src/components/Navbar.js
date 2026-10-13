@@ -47,14 +47,20 @@ const Navbar = () => {
         <ul className="mxp-nav__links">
           {navLinks.map((item) => (
             <li key={item.to}>
-              <Link
-                className="mxp-nav__link"
-                activeClassName="mxp-nav__link--active"
-                partiallyActive={item.to !== "/"}
-                to={item.to}
-              >
-                {item.label}
-              </Link>
+              {item.isStatic ? (
+                <a className="mxp-nav__link" href={item.to}>
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  className="mxp-nav__link"
+                  activeClassName="mxp-nav__link--active"
+                  partiallyActive={item.to !== "/"}
+                  to={item.to}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -85,15 +91,21 @@ const Navbar = () => {
           <Link to="/" onClick={() => setMobileOpen(false)}>
             Home
           </Link>
-          {navLinks.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.isStatic ? (
+              <a key={item.to} href={item.to}>
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
           <Link
             className="btn btn--primary"
             to={ctaTo}
