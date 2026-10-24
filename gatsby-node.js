@@ -12,6 +12,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       author: String
       authorImage: String  # Deprecated - use authors.js module instead
       description: String
+      # Set when the master copy of a post lives on another domain. Declared
+      # explicitly because no current post uses it — inference would drop the
+      # field and break the blog-post query.
+      canonical: String
       featuredpost: Boolean
       featuredimage: String
       category: String

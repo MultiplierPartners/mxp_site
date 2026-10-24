@@ -12,7 +12,6 @@ URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tool
 
 ## Insights
 
-- [Let Them: A Developer's Guide to UMA for Agents](https://multiplierpartners.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a.md): The industry is fighting over how agents prove who they are. That is the wrong fight. The question that decides whether an agent economy works is whether the owner of a resource can set the terms — and U4A is what that looks like in running code.
 - [The AI Edge: Funding Challenges for the Leading Builders](https://multiplierpartners.ai/blog/2026-07-21-the-ai-edge-funding-challenges.md): A placid surface with dynamic undercurrents. Big Tech's AI buildout has crossed from a spending story into a financing story — and for enterprises, that makes it a due-diligence issue.
 - [The AI Infrastructure Valuation Paradox](https://multiplierpartners.ai/blog/2026-07-10-ai-infrastructure-valuation-paradox.md): What has bolstered AI infrastructure valuations in the public and private markets — and what makes those valuations vulnerable to repricing.
 - [The ROI Reckoning](https://multiplierpartners.ai/blog/2026-06-15-the-roi-reckoning.md): Why Agentic AI Ambitions Are Hitting a Wall — and What Separates the 12% Who Break Through
@@ -30,11 +29,12 @@ URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tool
 
 ## Current work
 
-- [UMA for Agents](https://u4a.ai): A working reference architecture that implements a
+- [UMA for Agents](https://u4a.ai): A working reference architecture that implements a 
   modernized take on UMA for decentralized agent authorization — an owner sets
-  the terms for their own data once, on infrastructure they control, 
-  and those terms hold against somebody else's agent while they are offline. 
-  A reference architecture demonstrating UMA 2.0 composed for the modern agent
+  the terms for
+  their own data once, on infrastructure they control, and those terms hold
+  against somebody else's agent while they are offline. A reference
+  architecture demonstrating UMA 2.0 composed for the modern agent
   economy, built by Nick Gamb with Eve Maler.
 
 ## Related properties

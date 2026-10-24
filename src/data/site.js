@@ -21,7 +21,10 @@ export const u4a = {
   // The same one-click launch the "try it now" button on u4a.ai uses.
   codespace:
     "https://codespaces.new/nickgamb/uma4agents?devcontainer_path=.devcontainer%2Fdevcontainer.json",
-  post: "/blog/2026-08-06-let-them-a-developers-guide-to-u4a/",
+  // The developer's guide lives on u4a.ai. It ran here for a while under a
+  // canonical pointing there; the copy here is gone and /blog/…-u4a/ now
+  // redirects to this URL.
+  post: "https://u4a.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a/",
 };
 
 // The other practices this work is done with. u4a.ai is not here — it has
@@ -29,7 +32,6 @@ export const u4a = {
 // same link twice.
 export const partners = [
   { name: "Venn Factory", url: "https://www.vennfactory.com" },
-  { name: "MindGarden", url: "https://mindgardenai.com" },
 ];
 
 export const ctaLabel = "AI Security Assessment Now";

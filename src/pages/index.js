@@ -209,9 +209,14 @@ const IndexPage = () => (
             >
               Explore {u4a.label} &rarr;
             </a>
-            <Link className="btn btn--outline" to={u4a.post}>
+            <a
+              className="btn btn--outline"
+              href={u4a.post}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Read the developer&rsquo;s guide
-            </Link>
+            </a>
           </div>
         </div>
         <div className="project-band__aside">

@@ -57,3 +57,18 @@
   from = "/contact"
   to = "/contact/"
   status = 301
+
+# The U4A developer's guide ran here under a canonical pointing at u4a.ai,
+# and was shared from here. The copy here is gone; send the old URL to the
+# master copy rather than 404ing inbound links.
+[[redirects]]
+  from = "/blog/2026-08-06-let-them-a-developers-guide-to-u4a/"
+  to = "https://u4a.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-08-06-let-them-a-developers-guide-to-u4a"
+  to = "https://u4a.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a/"
+  status = 301
+  force = true
