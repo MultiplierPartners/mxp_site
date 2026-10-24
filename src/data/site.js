@@ -9,18 +9,16 @@ export const contact = {
 // this practice advises on. Kept here rather than written into a page,
 // because it is now linked from the home page, the footer and llms.txt.
 export const people = {
-  nick: { name: "Nick Gamb", linkedin: "https://www.linkedin.com/in/nickgamb/" },
   eve: { name: "Eve Maler", linkedin: "https://www.linkedin.com/in/evemaler/" },
 };
 
+// Everything here points at u4a.ai. The project's repository and one-click
+// lab are reached from there rather than linked directly, so this site
+// carries a single destination for the work.
 export const u4a = {
   url: "https://u4a.ai",
   label: "u4a.ai",
   name: "UMA for Agents",
-  repo: "https://github.com/nickgamb/uma4agents",
-  // The same one-click launch the "try it now" button on u4a.ai uses.
-  codespace:
-    "https://codespaces.new/nickgamb/uma4agents?devcontainer_path=.devcontainer%2Fdevcontainer.json",
   // The developer's guide lives on u4a.ai. It ran here for a while under a
   // canonical pointing there; the copy here is gone and /blog/…-u4a/ now
   // redirects to this URL.

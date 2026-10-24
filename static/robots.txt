@@ -46,7 +46,6 @@ Allow: /
 # and none of them is a mirror of this one.
 #
 #   https://u4a.ai                — UMA for Agents, the open reference work
-#   https://mindgardenai.com      — MindGarden, identity security research
 #   https://www.vennfactory.com   — Venn Factory
 #
 # These are comments: robots.txt has no directive for a related site, so

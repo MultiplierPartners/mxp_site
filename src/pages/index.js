@@ -183,15 +183,7 @@ const IndexPage = () => (
           </p>
           <p className="lede">
             A reference architecture demonstrating UMA 2.0 composed for the
-            modern agent economy, built by{" "}
-            <a
-              href={people.nick.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {people.nick.name}
-            </a>{" "}
-            with{" "}
+            modern agent economy, built with{" "}
             <a
               href={people.eve.linkedin}
               target="_blank"
@@ -243,11 +235,7 @@ const IndexPage = () => (
           <li>
             <span className="project-band__fact">Runnable</span>
             <span className="project-band__note">
-              <a
-                href={u4a.codespace}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={u4a.url} target="_blank" rel="noopener noreferrer">
                 A Kubernetes lab that starts in a browser
               </a>
               .

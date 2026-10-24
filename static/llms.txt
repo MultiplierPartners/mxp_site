@@ -35,12 +35,10 @@ URL. The site also speaks MCP at https://multiplierpartners.ai/mcp with two tool
   their own data once, on infrastructure they control, and those terms hold
   against somebody else's agent while they are offline. A reference
   architecture demonstrating UMA 2.0 composed for the modern agent
-  economy, built by Nick Gamb with Eve Maler.
+  economy, built with Eve Maler.
 
 ## Related properties
 
 Separate sites published by the same people. None is a mirror of this one.
 
-- [MindGarden](https://mindgardenai.com): Nick Gamb's identity security
-  research and consulting practice.
 - [Venn Factory](https://www.vennfactory.com): Eve Maler's practice.
