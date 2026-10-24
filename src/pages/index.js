@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import { Section, Card, CardGrid, CtaBand } from "../components/Sections";
-import { u4a, people } from "../data/site";
 import { contact, services } from "../data/site";
 
 const shifts = [
@@ -158,96 +157,6 @@ const IndexPage = () => (
               Agentic workflows.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Placed here rather than in the hero, and deliberately unnumbered.
-        The hero is the practice — this is a consulting firm, and leading with
-        a project would describe a different business. So it sits directly
-        under the hero and above the numbered argument: the practice, then
-        what it has built, then the case. Unnumbered, so it reads as a
-        spotlight beside that argument rather than as a step inside it. */}
-    <section className="project-band">
-      <div className="container project-band__inner">
-        <div className="project-band__body">
-          <p className="eyebrow eyebrow--plain">Current work</p>
-          <h2 className="h-section">
-            The control layer we advise on, built in the open.
-          </h2>
-          <p className="lede">
-            <strong>UMA for Agents</strong> A working reference architecture that implements a
-            modernized take on UMA for decentralized agent authorization — a person sets the 
-            terms for their own data once, on infrastructure they control, and those terms 
-            hold against somebody else&rsquo;s agent while they are offline.
-          </p>
-          <p className="lede">
-            A reference architecture demonstrating UMA 2.0 composed for the
-            modern agent economy, built with{" "}
-            <a
-              href={people.eve.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {people.eve.name}
-            </a>{", who co-authored the UMA standard."}
-          </p>
-          <div className="btn-row">
-            <a
-              className="btn btn--primary"
-              href={u4a.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Explore {u4a.label} &rarr;
-            </a>
-            <a
-              className="btn btn--outline"
-              href={u4a.post}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read the developer&rsquo;s guide
-            </a>
-          </div>
-        </div>
-        <div className="project-band__aside">
-          {/* The project's own mark, so the band is recognisably about a
-              thing with an identity rather than a paragraph with a link. */}
-          <a
-            className="project-band__mark"
-            href={u4a.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${u4a.name} — ${u4a.label}`}
-          >
-            <img src="/img/u4a-mark.svg" alt="" width="72" height="72" />
-            <span className="project-band__mark-url">{u4a.label}</span>
-          </a>
-
-          <ul className="project-band__facts">
-          <li>
-            <span className="project-band__fact">Open source</span>
-            <span className="project-band__note">
-              Every claim is checkable against the code.
-            </span>
-          </li>
-          <li>
-            <span className="project-band__fact">Runnable</span>
-            <span className="project-band__note">
-              <a href={u4a.url} target="_blank" rel="noopener noreferrer">
-                A Kubernetes lab that starts in a browser
-              </a>
-              .
-            </span>
-          </li>
-          <li>
-            <span className="project-band__fact">Standards-track</span>
-            <span className="project-band__note">
-              UMA, AAuth, MCP, PRM, RAR, MyTerms, XAA.
-            </span>
-          </li>
-          </ul>
         </div>
       </div>
     </section>

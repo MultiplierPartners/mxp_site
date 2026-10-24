@@ -5,33 +5,6 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/matt-teeple-059ab8174",
 };
 
-// UMA for Agents — the open reference implementation of the control layer
-// this practice advises on. Kept here rather than written into a page,
-// because it is now linked from the home page, the footer and llms.txt.
-export const people = {
-  eve: { name: "Eve Maler", linkedin: "https://www.linkedin.com/in/evemaler/" },
-};
-
-// Everything here points at u4a.ai. The project's repository and one-click
-// lab are reached from there rather than linked directly, so this site
-// carries a single destination for the work.
-export const u4a = {
-  url: "https://u4a.ai",
-  label: "u4a.ai",
-  name: "UMA for Agents",
-  // The developer's guide lives on u4a.ai. It ran here for a while under a
-  // canonical pointing there; the copy here is gone and /blog/…-u4a/ now
-  // redirects to this URL.
-  post: "https://u4a.ai/blog/2026-08-06-let-them-a-developers-guide-to-u4a/",
-};
-
-// The other practices this work is done with. u4a.ai is not here — it has
-// its own line above as the current work, and listing it twice would be the
-// same link twice.
-export const partners = [
-  { name: "Venn Factory", url: "https://www.vennfactory.com" },
-];
-
 export const ctaLabel = "AI Security Assessment Now";
 export const ctaTo = "/contact/";
 

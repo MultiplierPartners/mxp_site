@@ -147,22 +147,6 @@ function writeLlmsTxt(blogs) {
     `- [About](${SITE}/about/): Who we are.`,
     `- [Contact](${SITE}/contact/): How to reach us.`,
     "",
-    "## Current work",
-    "",
-    "- [UMA for Agents](https://u4a.ai): A working reference architecture that implements a ",
-    "  modernized take on UMA for decentralized agent authorization — an owner sets",
-    "  the terms for",
-    "  their own data once, on infrastructure they control, and those terms hold",
-    "  against somebody else's agent while they are offline. A reference",
-    "  architecture demonstrating UMA 2.0 composed for the modern agent",
-    "  economy, built with Eve Maler.",
-    "",
-    "## Related properties",
-    "",
-    "Separate sites published by the same people. None is a mirror of this one.",
-    "",
-    "- [Venn Factory](https://www.vennfactory.com): Eve Maler's practice.",
-    "",
   ];
   fs.writeFileSync(LLMS_OUT, lines.join("\n"));
   console.log(`Built llms.txt → ${LLMS_OUT}`);

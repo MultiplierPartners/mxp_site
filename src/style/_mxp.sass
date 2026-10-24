@@ -1685,10 +1685,9 @@ a.card:hover
 // Site search and the theme toggle
 // ===================================================================
 //
-// Ported from u4a.ai, which shares this chassis. Token names were mapped onto
-// this palette rather than the two sites keeping separate copies of the same
-// colours; the markup and behaviour are unchanged, so a fix in either place
-// still reads the same here.
+// Ported from another site built on this chassis. Token names were mapped
+// onto this palette rather than keeping separate copies of the same colours;
+// the markup and behaviour are unchanged.
 .theme-toggle
   flex: 0 0 auto
   display: inline-flex
@@ -1885,99 +1884,6 @@ img.mxp-nav__mark
   @media (max-width: $bp-md)
     display: none
 
-// ===================================================================
-// The current-work spotlight on the home page
-// ===================================================================
-//
-// Reads as a band rather than as a numbered section, because it is not a step
-// in the argument — it is the evidence sitting beside it. Sunk against the
-// page ground and ruled top and bottom so it separates without needing a
-// colour the brand does not have.
-.project-band
-  padding: 4.5rem 0
-  background: $bg-card
-  border-top: 1px solid $border
-  border-bottom: 1px solid $border
-
-.project-band__inner
-  display: grid
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr)
-  gap: 3rem
-  // Centred rather than top-aligned. The prose column is roughly twice the
-  // height of the mark and its three facts, so aligning their tops leaves the
-  // aside stranded against the heading with a column of dead space under it.
-  align-items: center
-  @media (max-width: $bp-lg)
-    grid-template-columns: 1fr
-    gap: 2rem
-
-.project-band__body
-  .lede
-    max-width: $lede-width
-    margin-bottom: 1rem
-  .btn-row
-    margin-top: 1.75rem
-
-.project-band__facts
-  list-style: none
-  margin: 0
-  padding: 0
-  display: flex
-  flex-direction: column
-  gap: 1.25rem
-  // On a narrow screen these sit under the prose, where a column of three
-  // reads as an afterthought; side by side they read as a caption to it.
-  @media (max-width: $bp-lg)
-    flex-direction: row
-    flex-wrap: wrap
-    gap: 1.5rem 2.5rem
-  li
-    display: flex
-    flex-direction: column
-    gap: 0.3rem
-    padding-left: 1rem
-    border-left: 2px solid $primary
-    min-width: 12rem
-
-.project-band__fact
-  font-family: $font-mono
-  font-size: 0.72rem
-  letter-spacing: 0.16em
-  text-transform: uppercase
-  color: $fg
-
-.project-band__note
-  font-size: 0.88rem
-  line-height: 1.45
-  color: $fg-muted
-
-// The current-work link in the footer. Two lines rather than one so the
-// project has a name and an address, the way the nav lockup does.
-.mxp-footer__project
-  // Block-level, not inline. As an inline-flex it stayed on the same line, so
-  // the LinkedIn button that follows it flowed alongside and the two
-  // overlapped on a narrow screen.
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-  width: fit-content
-  gap: 0.15rem
-  margin-bottom: 1.5rem
-  text-decoration: none
-  &:hover .mxp-footer__project-url
-    color: $primary
-
-.mxp-footer__project-name
-  font-size: 0.95rem
-  font-weight: 600
-  color: $fg
-
-.mxp-footer__project-url
-  font-family: $font-mono
-  font-size: 0.8rem
-  color: $fg-muted
-  transition: color 0.15s ease
-
 // Which cut of the wordmark is showing. Follows the same three-state rule as
 // the tokens: system by default, an explicit choice winning over it.
 //
@@ -2003,61 +1909,3 @@ img.mxp-nav__mark--light
     display: block
   img.mxp-nav__mark--light
     display: none
-
-// The project's mark and facts, as one column beside the prose.
-.project-band__aside
-  display: flex
-  flex-direction: column
-  gap: 1.75rem
-  @media (max-width: $bp-lg)
-    gap: 1.5rem
-
-.project-band__mark
-  display: inline-flex
-  align-items: center
-  gap: 0.85rem
-  text-decoration: none
-  align-self: flex-start
-  img
-    display: block
-    width: 72px
-    height: 72px
-    border-radius: $radius
-    // The mark carries its own near-black tile, so on a light page it needs
-    // no plate under it and on a dark one it must not gain a seam.
-    flex: 0 0 auto
-  &:hover .project-band__mark-url
-    color: $primary
-
-.project-band__mark-url
-  font-family: $font-mono
-  font-size: 0.95rem
-  color: $fg
-  transition: color 0.15s ease
-
-// Links inside the band's prose and facts. The prose already sets its colour,
-// so these only need to be distinguishable and to stay so on both grounds.
-.project-band__body .lede a,
-.project-band__note a
-  color: inherit
-  text-decoration: underline
-  text-decoration-color: $primary
-  text-underline-offset: 3px
-  transition: color 0.15s ease
-  &:hover
-    color: $primary
-
-// The partner practices, as plain links. Block-level for the same reason the
-// current-work link above is: an inline row here lets the LinkedIn button
-// that follows flow alongside it.
-.mxp-footer__partners
-  display: flex
-  flex-wrap: wrap
-  gap: 0.4rem 1.5rem
-  margin-bottom: 1.5rem
-  a
-    color: $fg-muted
-    font-size: 0.9rem
-    text-decoration: none
-    &:hover
-      color: $fg
